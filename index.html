@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bchronicles Deutsch - Sätze</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-800 hover:text-blue-600 transition-colors">
+                    <span class="text-2xl">🇩🇪</span> 
+                    <span>Bchronicles Deutsch</span>
+                </a>
+                
+                <div class="hidden md:block">
+                    <div class="flex space-x-2">
+                        <a href="index.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-700 bg-blue-50">Sätze</a>
+                        <a href="conversation.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-600 hover:bg-slate-100">Gespräche</a>
+                        <a href="words.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-600 hover:bg-slate-100">Wörter</a>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-slate-500 hover:text-blue-600 focus:outline-none p-2 rounded-md hover:bg-slate-100 transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="index.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Sätze</a>
+                <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Gespräche</a>
+                <a href="words.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Wörter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-8 sm:py-12">
+        
+        <div class="text-center mb-10 space-y-4">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+                Wichtige Sätze (Sentences)
+            </h1>
+            <p class="text-slate-500 text-lg">Wählen Sie eine Kategorie und hören Sie sich die Aussprache an.</p>
+            
+            <div class="relative w-full sm:w-1/2 mx-auto mt-6">
+                <select id="category-selector" onchange="updateSentences(this.value)" class="w-full appearance-none bg-white border border-slate-300 text-slate-700 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 py-3 pl-4 pr-10 shadow-sm cursor-pointer transition-shadow hover:shadow-md">
+                    <option value="classroom">Häufig genutzte Unterrichtssätze</option>
+                    </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="sentences-container">
+            </div>
+
+    </main>
+
+    <footer class="mt-auto border-t border-slate-200 bg-white">
+        <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="text-sm font-semibold text-slate-700">Bchronicles Deutsch</p>
+                <p class="text-xs text-slate-500 mt-1">Lernportal für die deutsche Sprache (A2)</p>
+            </div>
+            <div class="text-sm text-slate-400">
+                &copy; 2026. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data categorized for future expansion
+        const sentenceCategories = {
+            "classroom": [
+                { en: "Can you please repeat? I can't hear you.", de: "Können Sie bitte wiederholen? Ich kann Sie nicht hören." },
+                { en: "Which number are you talking about?", de: "Welche Nummer meinen Sie?" },
+                { en: "What is the page number?", de: "Was ist die Seitenzahl?" },
+                { en: "When will we finish our course?", de: "Wann beenden wir unseren Kurs?" },
+                { en: "I was late to class because of heavy traffic.", de: "Ich war wegen starkem Verkehr zu spät zum Unterricht." },
+                { en: "I couldn't catch the bus on time.", de: "Ich habe den Bus nicht rechtzeitig bekommen." },
+                { en: "I haven't done the writing part.", de: "Ich habe den Schreibteil nicht gemacht." },
+                { en: "I couldn't do the homework because I was busy.", de: "Ich konnte die Hausaufgaben nicht machen, weil ich beschäftigt war." },
+                { en: "Hello sir, I cannot come to class tomorrow.", de: "Hallo Herr, ich kann morgen nicht zum Unterricht kommen." },
+                { en: "What is the answer to question 9a?", de: "Was ist die Antwort auf Frage 9a?" },
+                { en: "I didn't understand the meaning of 'Spiegel.'", de: "Ich habe die Bedeutung von „Spiegel\" nicht verstanden." },
+                { en: "I forgot the key at my house.", de: "Ich habe den Schlüssel zu Hause vergessen." },
+                { en: "What is the price of this pencil?", de: "Was kostet dieser Bleistift?" },
+                { en: "Sorry sir, I couldn't hear.", de: "Entschuldigung Herr, ich konnte nicht hören." },
+                { en: "Can we hear the sound once again?", de: "Können wir den Ton noch einmal hören?" },
+                { en: "Can we see the video once again?", de: "Können wir das Video noch einmal sehen?" },
+                { en: "I am cooking the food by myself.", de: "Ich koche das Essen selbst." },
+                { en: "Can you speak more slowly, please?", de: "Können Sie bitte langsamer sprechen?" },
+                { en: "Can you explain it again?", de: "Können Sie das noch einmal erklären?" },
+                { en: "I don't understand this.", de: "Ich verstehe das nicht." },
+                { en: "How do you say this in German?", de: "Wie sagt man das auf Deutsch?" },
+                { en: "What does this word mean?", de: "Was bedeutet dieses Wort?" },
+                { en: "Can you write it on the board?", de: "Können Sie das an die Tafel schreiben?" },
+                { en: "May I come in?", de: "Darf ich reinkommen?" },
+                { en: "May I go out?", de: "Darf ich rausgehen?" },
+                { en: "I have a question.", de: "Ich habe eine Frage." },
+                { en: "Can you help me, please?", de: "Können Sie mir bitte helfen?" },
+                { en: "I don't know the answer.", de: "Ich weiß die Antwort nicht." },
+                { en: "Can I sit here?", de: "Kann ich hier sitzen?" },
+                { en: "What are we doing today?", de: "Was machen wir heute?" },
+                { en: "Do we have homework today?", de: "Haben wir heute Hausaufgaben?" },
+                { en: "I forgot my book.", de: "Ich habe mein Buch vergessen." },
+                { en: "Can you check my answer?", de: "Können Sie meine Antwort prüfen?" },
+                { en: "Is this correct?", de: "Ist das richtig?" },
+                { en: "Can you repeat the question?", de: "Können Sie die Frage wiederholen?" },
+                { en: "I need more time.", de: "Ich brauche mehr Zeit." },
+                { en: "I finished my work.", de: "Ich habe meine Arbeit fertig." },
+                { en: "Hello! How are you today?", de: "Hallo! Wie geht es Ihnen heute?" },
+                { en: "Good morning! Did you sleep well?", de: "Guten Morgen! Haben Sie gut geschlafen?" },
+                { en: "Good afternoon! How is your day going?", de: "Guten Tag! Wie läuft Ihr Tag?" },
+                { en: "Good evening! How was your day?", de: "Guten Abend! Wie war Ihr Tag?" },
+                { en: "Goodbye! See you tomorrow.", de: "Auf Wiedersehen! Bis morgen." },
+                { en: "See you later! Take care.", de: "Bis später! Passen Sie auf sich auf." },
+                { en: "How are you feeling today?", de: "Wie fühlen Sie sich heute?" },
+                { en: "I am doing well, thank you. And you?", de: "Mir geht es gut, danke. Und Ihnen?" },
+                { en: "Nice to meet you. Where are you from?", de: "Freut mich, Sie kennenzulernen. Woher kommen Sie?" },
+                { en: "It's nice to see you again.", de: "Es ist schön, Sie wiederzusehen." },
+                { en: "What is your name?", de: "Wie heißen Sie?" },
+                { en: "My name is Bisesh. Nice to meet you.", de: "Ich heiße Bisesh. Freut mich, Sie kennenzulernen." },
+                { en: "Where do you live now?", de: "Wo wohnen Sie jetzt?" },
+                { en: "Congratulations on your success!", de: "Herzlichen Glückwunsch zu Ihrem Erfolg!" },
+                { en: "Good luck with your exam!", de: "Viel Glück bei Ihrer Prüfung!" },
+                { en: "Have a nice day and take care!", de: "Ich wünsche Ihnen einen schönen Tag. Passen Sie auf sich auf!" },
+                { en: "Thank you very much for your help.", de: "Vielen Dank für Ihre Hilfe." },
+                { en: "You're welcome, no problem.", de: "Gern geschehen, kein Problem." },
+                { en: "Can we talk later? I am a bit busy now.", de: "Können wir später sprechen? Ich bin jetzt etwas beschäftigt." },
+                { en: "I hope to see you again soon.", de: "Ich hoffe, wir sehen uns bald wieder." }
+            ]
+        };
+
+        function speakGerman(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function updateSentences(category) {
+            const container = document.getElementById('sentences-container');
+            const phrases = sentenceCategories[category];
+            container.innerHTML = '';
+
+            phrases.forEach((phrase, index) => {
+                const card = document.createElement('div');
+                card.className = "bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <span class="text-[0.7rem] font-bold text-slate-400 uppercase tracking-widest">Satz #${index + 1}</span>
+                        <p class="text-slate-500 text-sm mt-2 mb-1 italic">${phrase.en}</p>
+                        <p class="text-slate-800 text-lg font-medium leading-snug">${phrase.de}</p>
+                    </div>
+                    <button class="mt-4 flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg bg-slate-50 border border-slate-200 text-blue-600 font-medium hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>
+                        Listen
+                    </button>
+                `;
+
+                card.querySelector('button').addEventListener('click', () => speakGerman(phrase.de));
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize with default category
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSentences('classroom');
+        });
+    </script>
+</body>
+</html>
