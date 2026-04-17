@@ -21,13 +21,31 @@
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
 
     <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-800 hover:text-blue-600 transition-colors">
-                    <span class="text-2xl">🇩🇪</span> 
-                    <span>Bchronicles Deutsch</span>
-                </a>
-                
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-800 hover:text-blue-600 transition-colors">
+                <span class="text-2xl">🇩🇪</span> 
+                <span class="hidden sm:inline">Bchronicles Deutsch</span>
+                <span class="sm:hidden">Bchronicles</span>
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 shadow-inner">
+                    <span id="timer-display" class="font-mono text-slate-700 font-semibold w-12 text-center">20:00</span>
+                    
+                    <button onclick="toggleTimer()" class="text-blue-600 hover:text-blue-800 focus:outline-none transition-colors" title="Start/Pause Timer">
+                        <svg id="timer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
+                        </svg>
+                    </button>
+                    
+                    <button onclick="resetTimer()" class="text-slate-400 hover:text-slate-600 focus:outline-none transition-colors" title="Reset Timer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                    </button>
+                </div>
+
                 <div class="hidden md:block">
                     <div class="flex space-x-2">
                         <a href="index.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-600 hover:bg-slate-100">Sätze</a>
@@ -45,15 +63,16 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="index.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Sätze</a>
-                <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Gespräche</a>
-                <a href="words.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Wörter</a>
-            </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <a href="index.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Sätze</a>
+            <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Gespräche</a>
+            <a href="words.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Wörter</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 sm:py-12 flex flex-col">
         
@@ -276,6 +295,89 @@
             const selector = document.getElementById('conversation-selector');
             loadConversation(selector.value);
         });
+
+        // Existing Mobile Menu toggle
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    // Timer Logic
+    let timerInterval;
+    const STUDY_TIME = 20 * 60; // 20 minutes in seconds
+    let timeLeft = STUDY_TIME; 
+    let isRunning = false;
+
+    const playIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />`;
+    const pauseIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />`;
+
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById('timer-display').innerText = 
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function playAlarm() {
+        // Uses the browser's Web Audio API to create a beep sound natively
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
+        
+        gainNode.gain.setValueAtTime(0.1, ctx.currentTime); // Volume control
+        
+        osc.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        
+        osc.start();
+        osc.stop(ctx.currentTime + 1.5); // Beep duration: 1.5 seconds
+
+        setTimeout(() => {
+            alert("Die 20 Minuten sind um! Zeit für eine Pause.\n(20 minutes are up! Time for a break.)");
+        }, 100);
+    }
+
+    function toggleTimer() {
+        const btnIcon = document.getElementById('timer-icon');
+        
+        if (isRunning) {
+            // Pause the timer
+            clearInterval(timerInterval);
+            isRunning = false;
+            btnIcon.innerHTML = playIcon;
+        } else {
+            // Start the timer
+            isRunning = true;
+            btnIcon.innerHTML = pauseIcon;
+            
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateDisplay();
+                } else {
+                    // Time is up
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    playAlarm();
+                    resetTimer();
+                }
+            }, 1000);
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        timeLeft = STUDY_TIME;
+        updateDisplay();
+        document.getElementById('timer-icon').innerHTML = playIcon;
+    }
+
+    // Initialize display on load
+    document.addEventListener('DOMContentLoaded', updateDisplay);
     </script>
 </body>
 </html>

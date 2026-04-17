@@ -20,13 +20,31 @@
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
 
     <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-800 hover:text-blue-600 transition-colors">
-                    <span class="text-2xl">🇩🇪</span> 
-                    <span>Bchronicles Deutsch</span>
-                </a>
-                
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-800 hover:text-blue-600 transition-colors">
+                <span class="text-2xl">🇩🇪</span> 
+                <span class="hidden sm:inline">Bchronicles Deutsch</span>
+                <span class="sm:hidden">Bchronicles</span>
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 shadow-inner">
+                    <span id="timer-display" class="font-mono text-slate-700 font-semibold w-12 text-center">20:00</span>
+                    
+                    <button onclick="toggleTimer()" class="text-blue-600 hover:text-blue-800 focus:outline-none transition-colors" title="Start/Pause Timer">
+                        <svg id="timer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
+                        </svg>
+                    </button>
+                    
+                    <button onclick="resetTimer()" class="text-slate-400 hover:text-slate-600 focus:outline-none transition-colors" title="Reset Timer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                    </button>
+                </div>
+
                 <div class="hidden md:block">
                     <div class="flex space-x-2">
                         <a href="index.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-600 hover:bg-slate-100">Sätze</a>
@@ -44,15 +62,16 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="index.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Sätze</a>
-                <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Gespräche</a>
-                <a href="words.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Wörter</a>
-            </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <a href="index.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Sätze</a>
+            <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Gespräche</a>
+            <a href="words.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Wörter</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-8 sm:py-12">
         
@@ -65,6 +84,10 @@
             <div class="relative w-full sm:w-1/2 mx-auto mt-6">
                 <select id="category-selector" onchange="updateWords(this.value)" class="w-full appearance-none bg-white border border-slate-300 text-slate-700 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 py-3 pl-4 pr-10 shadow-sm cursor-pointer transition-shadow hover:shadow-md">
                     <option value="b1_verben">B1 Verben</option>
+                    <option value="b1_nomen_klassenzimmer">Classroom words</option>
+                    <option value="b1_nomen_haushalt">Household</option>
+<option value="b1_nomen_zug">Train</option>
+
                     </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -133,7 +156,134 @@
                 { de: "sich verhalten", en: "to behave" },
                 { de: "sich beschweren", en: "to complain" },
                 { de: "sich entschuldigen", en: "to apologize" }
-            ]
+            ],
+            "b1_nomen_klassenzimmer": [
+    { de: "das Ergebnis", en: "the result" },
+    { de: "das Zeugnis", en: "the report card / certificate" },
+    { de: "der Aufsatz", en: "the essay" },
+    { de: "der Fehler", en: "the mistake" },
+    { de: "die Aussprache", en: "the pronunciation" },
+    { de: "das Wörterbuch", en: "the dictionary" },
+    { de: "das Fach", en: "the subject" },
+    { de: "die Prüfung", en: "the exam" },
+    { de: "die Regel", en: "the rule" },
+    { de: "das Semester", en: "the semester" },
+    { de: "der Stundenplan", en: "the timetable / schedule" },
+    { de: "die Hausarbeit", en: "the term paper / assignment" },
+    { de: "die Note", en: "the grade" },
+    { de: "die Ausnahme", en: "the exception" },
+    { de: "das Stipendium", en: "the scholarship" },
+    { de: "die Tafel", en: "the blackboard / whiteboard" },
+    { de: "das Thema", en: "the topic" },
+    { de: "der Teilnehmer", en: "the participant" },
+    { de: "der Vortrag", en: "the lecture / presentation" },
+    { de: "das Zertifikat", en: "the certificate" },
+    { de: "abschreiben", en: "to copy" },
+    { de: "unterstreichen", en: "to underline" },
+    { de: "zusammenfassen", en: "to summarize" },
+    { de: "nachschlagen", en: "to look up (e.g., in a dictionary)" },
+    { de: "präsentieren", en: "to present" },
+    { de: "lösen", en: "to solve" },
+    { de: "übersetzen", en: "to translate" },
+    { de: "buchstabieren", en: "to spell" },
+    { de: "korrigieren", en: "to correct" },
+    { de: "prüfen", en: "to check / to test" },
+    { de: "bestehen", en: "to pass (an exam)" },
+    { de: "durchfallen", en: "to fail (an exam)" },
+    { de: "sich melden", en: "to raise one's hand / volunteer" },
+    { de: "aufpassen", en: "to pay attention" },
+    { de: "aussprechen", en: "to pronounce" },
+    { de: "vorlesen", en: "to read aloud" },
+    { de: "üben", en: "to practice" },
+    { de: "bedeuten", en: "to mean" },
+    { de: "ergänzen", en: "to fill in / to complete" },
+    { de: "mitschreiben", en: "to take notes" }
+],
+"b1_nomen_haushalt": [
+    { de: "der Haushalt", en: "the household" },
+    { de: "der Staubsauger", en: "the vacuum cleaner" },
+    { de: "der Mülleimer", en: "the trash can / rubbish bin" },
+    { de: "die Waschmaschine", en: "the washing machine" },
+    { de: "der Kühlschrank", en: "the refrigerator" },
+    { de: "der Herd", en: "the stove" },
+    { de: "der Backofen", en: "the oven" },
+    { de: "die Heizung", en: "the heating" },
+    { de: "der Teppich", en: "the carpet / rug" },
+    { de: "das Waschbecken", en: "the sink" },
+    { de: "der Spiegel", en: "the mirror" },
+    { de: "das Handtuch", en: "the towel" },
+    { de: "die Decke", en: "the blanket / ceiling" },
+    { de: "das Kissen", en: "the pillow / cushion" },
+    { de: "der Topf", en: "the pot" },
+    { de: "die Pfanne", en: "the pan" },
+    { de: "das Besteck", en: "the cutlery" },
+    { de: "der Strom", en: "the electricity / power" },
+    { de: "die Miete", en: "the rent" },
+    { de: "der Vermieter", en: "the landlord" },
+    { de: "aufräumen", en: "to clean up / tidy up" },
+    { de: "putzen", en: "to clean" },
+    { de: "staubsaugen", en: "to vacuum" },
+    { de: "wischen", en: "to mop / wipe" },
+    { de: "fegen", en: "to sweep" },
+    { de: "abwaschen", en: "to wash the dishes" },
+    { de: "abtrocknen", en: "to dry (dishes)" },
+    { de: "bügeln", en: "to iron" },
+    { de: "lüften", en: "to ventilate / air out" },
+    { de: "einräumen", en: "to put away / load (e.g., dishwasher)" },
+    { de: "ausräumen", en: "to empty / unload" },
+    { de: "kochen", en: "to cook" },
+    { de: "braten", en: "to fry / roast" },
+    { de: "backen", en: "to bake" },
+    { de: "reparieren", en: "to repair / fix" },
+    { de: "mieten", en: "to rent" },
+    { de: "vermieten", en: "to let / rent out" },
+    { de: "einziehen", en: "to move in" },
+    { de: "ausziehen", en: "to move out" },
+    { de: "umziehen", en: "to move (house)" }
+],
+
+"b1_nomen_zug": [
+    { de: "der Bahnhof", en: "the train station" },
+    { de: "das Gleis", en: "the track / platform" },
+    { de: "der Bahnsteig", en: "the platform" },
+    { de: "die Fahrkarte", en: "the ticket" },
+    { de: "der Fahrplan", en: "the timetable / schedule" },
+    { de: "die Verspätung", en: "the delay" },
+    { de: "der Schalter", en: "the ticket counter / window" },
+    { de: "der Automat", en: "the vending machine" },
+    { de: "das Gepäck", en: "the luggage" },
+    { de: "der Koffer", en: "the suitcase" },
+    { de: "der Fahrgast", en: "the passenger" },
+    { de: "der Schaffner", en: "the conductor" },
+    { de: "der Sitzplatz", en: "the seat" },
+    { de: "die Reservierung", en: "the reservation" },
+    { de: "der Anschluss", en: "the connection" },
+    { de: "die Richtung", en: "the direction" },
+    { de: "das Abteil", en: "the compartment" },
+    { de: "die Durchsage", en: "the announcement" },
+    { de: "der Speisewagen", en: "the dining car" },
+    { de: "die Strecke", en: "the route" },
+    { de: "abfahren", en: "to depart" },
+    { de: "ankommen", en: "to arrive" },
+    { de: "einsteigen", en: "to board / get in" },
+    { de: "aussteigen", en: "to get off / exit" },
+    { de: "umsteigen", en: "to transfer / change trains" },
+    { de: "reservieren", en: "to reserve" },
+    { de: "stornieren", en: "to cancel" },
+    { de: "entwerten", en: "to validate / punch (a ticket)" },
+    { de: "verpassen", en: "to miss (a train)" },
+    { de: "sich beeilen", en: "to hurry" },
+    { de: "pendeln", en: "to commute" },
+    { de: "buchen", en: "to book" },
+    { de: "verreisen", en: "to go on a trip / travel away" },
+    { de: "transportieren", en: "to transport" },
+    { de: "halten", en: "to stop" },
+    { de: "sich setzen", en: "to sit down" },
+    { de: "warten", en: "to wait" },
+    { de: "kontrollieren", en: "to check / control" },
+    { de: "abholen", en: "to pick up" },
+    { de: "begleiten", en: "to accompany" }
+]
         };
 
         // Text-to-Speech Funktion
@@ -188,6 +338,89 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateWords('b1_verben');
         });
+
+        // Existing Mobile Menu toggle
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    // Timer Logic
+    let timerInterval;
+    const STUDY_TIME = 20 * 60; // 20 minutes in seconds
+    let timeLeft = STUDY_TIME; 
+    let isRunning = false;
+
+    const playIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />`;
+    const pauseIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />`;
+
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById('timer-display').innerText = 
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function playAlarm() {
+        // Uses the browser's Web Audio API to create a beep sound natively
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
+        
+        gainNode.gain.setValueAtTime(0.1, ctx.currentTime); // Volume control
+        
+        osc.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        
+        osc.start();
+        osc.stop(ctx.currentTime + 1.5); // Beep duration: 1.5 seconds
+
+        setTimeout(() => {
+            alert("Die 20 Minuten sind um! Zeit für eine Pause.\n(20 minutes are up! Time for a break.)");
+        }, 100);
+    }
+
+    function toggleTimer() {
+        const btnIcon = document.getElementById('timer-icon');
+        
+        if (isRunning) {
+            // Pause the timer
+            clearInterval(timerInterval);
+            isRunning = false;
+            btnIcon.innerHTML = playIcon;
+        } else {
+            // Start the timer
+            isRunning = true;
+            btnIcon.innerHTML = pauseIcon;
+            
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateDisplay();
+                } else {
+                    // Time is up
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    playAlarm();
+                    resetTimer();
+                }
+            }, 1000);
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        timeLeft = STUDY_TIME;
+        updateDisplay();
+        document.getElementById('timer-icon').innerHTML = playIcon;
+    }
+
+    // Initialize display on load
+    document.addEventListener('DOMContentLoaded', updateDisplay);
     </script>
 </body>
 </html>
