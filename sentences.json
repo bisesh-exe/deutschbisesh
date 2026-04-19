@@ -82,6 +82,28 @@
     { "en": "I unfortunately forgot my key.", "de": "Ich habe <strong>meinen Schlüssel</strong> leider vergessen." },
     { "en": "Are we going for a walk through the big park?", "de": "Gehen wir durch <strong>den großen Park</strong> spazieren?" }
   ],
+   "dativ": [
+    { "en": "I give the book to the teacher.", "de": "Ich gebe <strong>dem Lehrer</strong> das Buch." },
+    { "en": "Thank you for your help!", "de": "Danke <strong>für deine Hilfe</strong>!" },
+    { "en": "The bag belongs to the woman.", "de": "Die Tasche gehört <strong>der Frau</strong>." },
+    { "en": "How are you?", "de": "Wie geht es <strong>dir</strong>?" },
+    { "en": "I help my friend.", "de": "Ich helfe <strong>meinem Freund</strong>." },
+    { "en": "The child is playing with the dog.", "de": "Das Kind spielt <strong>mit dem Hund</strong>." },
+    { "en": "We are sitting at the table.", "de": "Wir sitzen <strong>am Tisch</strong>." },
+    { "en": "I live with my parents.", "de": "Ich wohne <strong>bei meinen Eltern</strong>." },
+    { "en": "The pizza tastes very good to me.", "de": "Die Pizza schmeckt <strong>mir</strong> sehr gut." },
+    { "en": "He comes from a small village.", "de": "Er kommt <strong>aus einem kleinen Dorf</strong>." },
+    { "en": "Can you give me the pen?", "de": "Kannst du <strong>mir</strong> den Stift geben?" },
+    { "en": "I work in a hospital.", "de": "Ich arbeite <strong>in einem Krankenhaus</strong>." },
+    { "en": "The man is waiting for the bus.", "de": "Der Mann wartet <strong>auf den Bus</strong>." },
+    { "en": "What's wrong with you?", "de": "Was fehlt <strong>dir</strong>?" },
+    { "en": "I go to the doctor.", "de": "Ich gehe <strong>zum Arzt</strong>." },
+    { "en": "The cat belongs to the neighbors.", "de": "Die Katze gehört <strong>den Nachbarn</strong>." },
+    { "en": "Thanks for the invitation.", "de": "Danke <strong>für die Einladung</strong>." },
+    { "en": "I'm sorry for him.", "de": "Er tut <strong>mir</strong> leid." },
+    { "en": "We are driving to the city center.", "de": "Wir fahren <strong>zum Stadtzentrum</strong>." },
+    { "en": "The child is afraid of the dark.", "de": "Das Kind hat Angst <strong>vor der Dunkelheit</strong>." }
+  ],
   "weil": [
     { "en": "I'm learning German because it's interesting.", "de": "Ich lerne Deutsch, weil es interessant ist." },
     { "en": "He stays at home because he's sick.", "de": "Er bleibt zu Hause, weil er krank ist." },

@@ -1,0 +1,103 @@
+{
+    "gespräch1": {
+        "title": "Fahrkartenkauf am Bahnhof",
+        "dialogue": [
+            { "speaker": "Ennuma", "text": "Guten Tag! Wann fährt der nächste Zug nach Berlin? Ich brauche eine Fahrkarte nach Berlin, bitte." },
+            { "speaker": "Bisesh", "text": "Guten Tag! Der nächste Zug fährt um 10:00 Uhr von Gleis 3. Wann möchten Sie fahren?" },
+            { "speaker": "Ennuma", "text": "Ich möchte jetzt fahren." },
+            { "speaker": "Bisesh", "text": "Einfach oder hin und zurück?" },
+            { "speaker": "Ennuma", "text": "Einfach, bitte." },
+            { "speaker": "Bisesh", "text": "Möchten Sie erste oder zweite Klasse fahren?" },
+            { "speaker": "Ennuma", "text": "Zweite Klasse, bitte." },
+            { "speaker": "Bisesh", "text": "Möchten Sie einen Platz reservieren? Wo möchten Sie sitzen: Gang oder Fenster?" },
+            { "speaker": "Ennuma", "text": "Ja, am Fenster, bitte. Muss ich umsteigen?" },
+            { "speaker": "Bisesh", "text": "Nein, der Zug fährt direkt nach Berlin." },
+            { "speaker": "Ennuma", "text": "Wann komme ich in Berlin an?" },
+            { "speaker": "Bisesh", "text": "Sie kommen um 14:00 Uhr an. Haben Sie eine BahnCard?" },
+            { "speaker": "Ennuma", "text": "Nein. Was kostet die Fahrkarte nach Berlin?" },
+            { "speaker": "Bisesh", "text": "Das macht 50 Euro, bitte." },
+            { "speaker": "Ennuma", "text": "Hier, bitte." },
+            { "speaker": "Bisesh", "text": "Danke. Hier ist Ihre Fahrkarte. Gute Reise!" },
+            { "speaker": "Ennuma", "text": "Vielen Dank! Auf Wiedersehen." }
+        ]
+    },
+    "gespräch2": {
+    "title": "Im Supermarkt",
+    "dialogue": [
+      { "speaker": "Shreya", "text": "Hallo Mark, schön dich zu sehen!" },
+      { "speaker": "Mark", "text": "Hallo Shreya! Ja, wirklich schön." },
+      { "speaker": "Shreya", "text": "Ich bin gerade im Supermarkt, weil ich ein paar Sachen für das Wochenende kaufen möchte." },
+      { "speaker": "Mark", "text": "Ach so. Was kaufst du denn?" },
+      { "speaker": "Shreya", "text": "Ich brauche hauptsächlich Obst und Gemüse." },
+      { "speaker": "Mark", "text": "Was für Obst nimmst du?" },
+      { "speaker": "Shreya", "text": "Ich habe mir schon Äpfel und Bananen genommen." },
+      { "speaker": "Mark", "text": "Das klingt gut. Übrigens, ich brauche auch Bananen. Kannst du mir welche mitbringen?" },
+      { "speaker": "Shreya", "text": "Klar, mache ich. Brauchst du noch irgendetwas anderes?" },
+      { "speaker": "Mark", "text": "Ja, ich habe leider keine Milch und kein Brot mehr zu Hause." },
+      { "speaker": "Shreya", "text": "Kein Problem. Ich sehe die Milch hier im Regal." },
+      { "speaker": "Mark", "text": "Super! Weißt du zufällig, wie viel die Milch kostet?" },
+      { "speaker": "Shreya", "text": "Die Milch kostet zwei Euro. Das ist ein fairer Preis, findest du nicht?" },
+      { "speaker": "Mark", "text": "Ja, das ist völlig in Ordnung." },
+      { "speaker": "Shreya", "text": "Kommst du eigentlich auch gleich in den Supermarkt oder soll ich alles für dich besorgen?" },
+      { "speaker": "Mark", "text": "Ich komme in etwa zehn Minuten vorbei. Dann kann ich dich an der Kasse treffen." },
+      { "speaker": "Shreya", "text": "Perfekt, dann sehen wir uns gleich. Bis später!" },
+      { "speaker": "Mark", "text": "Ja, bis gleich und vielen Dank!" }
+    ]
+  },
+    "gespräch3": {
+    "title": "Vom Flughafen nach Lübeck",
+    "dialogue": [
+      { "speaker": "Taxifahrer", "text": "Guten Tag! Herzlich willkommen in Hamburg." },
+      { "speaker": "Ram", "text": "Guten Tag! Vielen Dank." },
+      { "speaker": "Taxifahrer", "text": "Wohin möchten Sie bitte fahren?" },
+      { "speaker": "Ram", "text": "Ich möchte nach Lübeck fahren." },
+      { "speaker": "Taxifahrer", "text": "Nach Lübeck? Das ist eine ziemlich weite Strecke. Möchten Sie direkt dorthin?" },
+      { "speaker": "Ram", "text": "Ja, direkt bitte. Ich komme übrigens aus Nepal." },
+      { "speaker": "Taxifahrer", "text": "Ach so, Nepal! Das ist ja sehr weit weg. Haben Sie viel Gepäck dabei?" },
+      { "speaker": "Ram", "text": "Ja, ich habe zwei Koffer und einen Rucksack." },
+      { "speaker": "Taxifahrer", "text": "Das ist kein Problem. Die Fahrt nach Lübeck dauert ungefähr eine Stunde." },
+      { "speaker": "Ram", "text": "Eine Stunde? Okay. Was kostet die Fahrt ungefähr?" },
+      { "speaker": "Taxifahrer", "text": "Sie kostet etwa 120 Euro." },
+      { "speaker": "Ram", "text": "120 Euro? Das ist aber teuer." },
+      { "speaker": "Taxifahrer", "text": "Ja, das stimmt, aber es ist eine lange Strecke. Alternativ können Sie auch den Zug nehmen." },
+      { "speaker": "Ram", "text": "Ich bin vom Flug sehr müde. Deshalb nehme ich lieber das Taxi." },
+      { "speaker": "Taxifahrer", "text": "Verstehe. Dann steigen Sie bitte ein." },
+      { "speaker": "Ram", "text": "Kann ich mit Karte bezahlen?" },
+      { "speaker": "Taxifahrer", "text": "Ja, Kartenzahlung ist möglich. Oder möchten Sie bar bezahlen?" },
+      { "speaker": "Ram", "text": "Ich zahle mit Karte. Vielen Dank." },
+      { "speaker": "Taxifahrer", "text": "Perfekt. Bitte schnallen Sie sich an. Wir fahren jetzt los." }
+    ]
+  },
+  "gespräch4": {
+    "title": "Wohnungsbesichtigung",
+    "dialogue": [
+      { "speaker": "Vermieter", "text": "Guten Tag, Herr Ram. Schön, dass Sie da sind." },
+      { "speaker": "Ram", "text": "Guten Tag. Danke, dass ich die Wohnung sehen darf." },
+      { "speaker": "Vermieter", "text": "Gerne. Also, die Wohnung ist 45 Quadratmeter groß, mit einem Zimmer, Küche und Bad." },
+      { "speaker": "Ram", "text": "Das klingt gut. Ist die Wohnung möbliert?" },
+      { "speaker": "Vermieter", "text": "Nein, sie ist unmöbliert. Aber eine Einbauküche gibt es." },
+      { "speaker": "Ram", "text": "Verstehe. Und was kostet die Miete?" },
+      { "speaker": "Vermieter", "text": "Die Kaltmiete beträgt 500 Euro. Dazu kommen Nebenkosten für Wasser, Heizung und Müll." },
+      { "speaker": "Ram", "text": "Was ist dann die Warmmiete?" },
+      { "speaker": "Vermieter", "text": "Die Warmmiete ist 650 Euro. Darin sind auch Strom und Internet nicht enthalten." },
+      { "speaker": "Ram", "text": "Okay. Wie hoch ist die Kaution?" },
+      { "speaker": "Vermieter", "text": "Die Kaution beträgt drei Kaltmieten, also 1500 Euro." },
+      { "speaker": "Ram", "text": "Das ist viel Geld. Kann ich die Kaution in Raten zahlen?" },
+      { "speaker": "Vermieter", "text": "Ja, das ist möglich. Sie können die erste Rate mit der ersten Miete zahlen." },
+      { "speaker": "Ram", "text": "Gut. Eine wichtige Frage: Kann ich hier eine Anmeldung machen?" },
+      { "speaker": "Vermieter", "text": "Ja, natürlich. Sie brauchen die Wohnungsgeberbestätigung von mir für das Bürgeramt." },
+      { "speaker": "Ram", "text": "Super. Ich komme aus Nepal und brauche die Anmeldung für meine Aufenthaltserlaubnis." },
+      { "speaker": "Vermieter", "text": "Kein Problem. Ich gebe Ihnen das Dokument nach Vertragsunterzeichnung." },
+      { "speaker": "Ram", "text": "Wie lange ist der Mietvertrag?" },
+      { "speaker": "Vermieter", "text": "Der Vertrag läuft auf unbestimmte Zeit, aber mit einer Kündigungsfrist von drei Monaten." },
+      { "speaker": "Ram", "text": "Verstehe. Gibt es auch ein Haustierverbot?" },
+      { "speaker": "Vermieter", "text": "Kleine Haustiere wie Hamster sind erlaubt. Hunde und Katzen nur mit Erlaubnis." },
+      { "speaker": "Ram", "text": "Ich habe keine Haustiere. Das ist gut." },
+      { "speaker": "Vermieter", "text": "Möchten Sie die Wohnung nehmen?" },
+      { "speaker": "Ram", "text": "Ja, ich nehme sie. Wann kann ich einziehen?" },
+      { "speaker": "Vermieter", "text": "Sie können ab dem 1. nächsten Monats einziehen." },
+      { "speaker": "Ram", "text": "Perfekt. Dann machen wir den Vertrag." },
+      { "speaker": "Vermieter", "text": "Gut. Ich bereite den Mietvertrag vor und schicke ihn Ihnen per E-Mail." }
+    ]
+  }
+}

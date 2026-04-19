@@ -8,12 +8,12 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Customizing Tailwind for a professional, clean look
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
                     }
                 }
             }
@@ -76,19 +76,9 @@
   </div>
 </nav>
 
-    <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 sm:py-12 flex flex-col">
+    <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-8 sm:py-12 flex flex-col">
         
-        <div id="section-sentences" class="hidden flex-grow flex flex-col items-center justify-center transition-opacity duration-300">
-            <div class="text-center space-y-4">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 text-slate-400 mb-2">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                </div>
-                <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 tracking-tight">Wichtige Sätze</h1>
-                <p class="text-lg text-slate-500">Hier ist momentan nichts. (Nothing here at the moment.)</p>
-            </div>
-        </div>
-
-        <div id="section-conversations" class="block transition-opacity duration-300">
+        <div id="section-conversations" class="block transition-opacity duration-300 w-full">
             
             <div class="max-w-2xl mx-auto mb-8 text-center space-y-4">
                 <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
@@ -100,6 +90,10 @@
                     <select id="conversation-selector" onchange="loadConversation(this.value)" class="w-full appearance-none bg-white border border-slate-300 text-slate-700 text-base sm:text-lg rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-3 pl-4 pr-10 shadow-sm cursor-pointer transition-shadow hover:shadow-md">
                         <option value="gespräch1">Gespräch 1: Fahrkartenkauf am Bahnhof</option>
                         <option value="gespräch2">Gespräch 2: Im Supermarkt</option>
+                        <option value="gespräch3">Gespräch 3: Vom Flughafen nach Lübeck (Talk with Taxi driver)</option>
+                        <option value="gespräch4">Gespräch 4: Wohnungsbesichtigung (Talk with Landlord)</option>
+
+
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -107,106 +101,93 @@
                 </div>
             </div>
             
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+            <div class="w-full mx-auto relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                
+                <div class="relative bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl flex flex-col">
                     
-                    <div class="bg-slate-50 border-b border-slate-200 p-4 sm:p-5 flex items-center justify-between">
-                        <h4 id="conversation-title" class="text-lg font-semibold text-slate-800">Fahrkartenkauf am Bahnhof</h4>
-                        <span class="text-xs font-medium text-blue-600 bg-blue-100 rounded-full px-3 py-1">A2 Level</span>
+                    <div class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 p-4 sm:p-5 flex items-center justify-between z-10 shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+                            <h4 id="conversation-title" class="text-lg font-medium tracking-wide text-slate-100">Lädt...</h4>
+                        </div>
+                        <span class="text-[0.65rem] font-mono tracking-widest text-cyan-400 bg-cyan-950/40 border border-cyan-800/50 rounded px-2.5 py-1 uppercase">A2 Level</span>
                     </div>
 
-                    <div id="conversation-container" class="p-4 sm:p-6 overflow-y-auto max-h-[60vh] scroll-smooth bg-slate-50/50">
+                    <div id="conversation-container" class="relative p-4 sm:p-6 overflow-y-auto h-[60vh] scroll-smooth bg-slate-900 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:24px_24px]">
                         </div>
                 </div>
             </div>
         </div>
-
-        <div id="section-words" class="hidden flex-grow flex flex-col items-center justify-center transition-opacity duration-300">
-            <div class="text-center space-y-4">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 text-slate-400 mb-2">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                </div>
-                <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 tracking-tight">Wortschatz</h1>
-                <p class="text-lg text-slate-500">Hier können Sie bald Vokabeln lernen.</p>
-            </div>
-        </div>
-
     </main>
 
     <footer class="mt-auto border-t border-slate-200 bg-white">
-        <div class="max-w-5xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="text-center sm:text-left">
-                <p class="text-sm font-medium text-slate-700">Deutsch Sprechtraining</p>
-                <p class="text-xs text-slate-500 mt-1">Version 1.0 • Language Practice App</p>
-            </div>
-            <div class="text-sm text-slate-500">
-                &copy; 2026. All rights reserved.
-            </div>
+      <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div>
+          <p class="text-sm font-semibold text-slate-700">Bchronicles Deutsch</p>
+          <p class="text-xs text-slate-500 mt-1">Lernportal für die deutsche Sprache (A2)</p>
         </div>
+        <div class="text-sm text-slate-400">&copy; 2026. Alle Rechte vorbehalten.</div>
+      </div>
     </footer>
 
+    <script src="timer.js"></script>
     <script>
-        // Data structure to hold multiple conversations
-        const allConversations = {
-            "gespräch1": {
-                title: "Fahrkartenkauf am Bahnhof",
-                dialogue: [
-                    { speaker: "Ennuma", text: "Guten Tag! Wann fährt der nächste Zug nach Berlin? Ich brauche eine Fahrkarte nach Berlin, bitte." },
-                    { speaker: "Bisesh", text: "Guten Tag! Der nächste Zug fährt um 10:00 Uhr von Gleis 3. Wann möchten Sie fahren?" },
-                    { speaker: "Ennuma", text: "Ich möchte jetzt fahren." },
-                    { speaker: "Bisesh", text: "Einfach oder hin und zurück?" },
-                    { speaker: "Ennuma", text: "Einfach, bitte." },
-                    { speaker: "Bisesh", text: "Möchten Sie erste oder zweite Klasse fahren?" },
-                    { speaker: "Ennuma", text: "Zweite Klasse, bitte." },
-                    { speaker: "Bisesh", text: "Möchten Sie einen Platz reservieren? Wo möchten Sie sitzen: Gang oder Fenster?" },
-                    { speaker: "Ennuma", text: "Ja, am Fenster, bitte. Muss ich umsteigen?" },
-                    { speaker: "Bisesh", text: "Nein, der Zug fährt direkt nach Berlin." },
-                    { speaker: "Ennuma", text: "Wann komme ich in Berlin an?" },
-                    { speaker: "Bisesh", text: "Sie kommen um 14:00 Uhr an. Haben Sie eine BahnCard?" },
-                    { speaker: "Ennuma", text: "Nein. Was kostet die Fahrkarte nach Berlin?" },
-                    { speaker: "Bisesh", text: "Das macht 50 Euro, bitte." },
-                    { speaker: "Ennuma", text: "Hier, bitte." },
-                    { speaker: "Bisesh", text: "Danke. Hier ist Ihre Fahrkarte. Gute Reise!" },
-                    { speaker: "Ennuma", text: "Vielen Dank! Auf Wiedersehen." }
-                ]
-            },
-            "gespräch2": {
-                title: "Im Supermarkt",
-                dialogue: [
-                    { speaker: "Shreya", text: "Hallo Priti!" },
-                    { speaker: "Priti", text: "Hallo Shreya!" },
-                    { speaker: "Shreya", text: "Ich bin im Supermarkt." },
-                    { speaker: "Priti", text: "Oh, was kaufst du?" },
-                    { speaker: "Shreya", text: "Ich kaufe Obst und Gemüse." },
-                    { speaker: "Priti", text: "Was für Obst?" },
-                    { speaker: "Shreya", text: "Ich kaufe Äpfel und Bananen." },
-                    { speaker: "Priti", text: "Sehr gut. Ich brauche auch Bananen." },
-                    { speaker: "Shreya", text: "Brauchst du noch etwas?" },
-                    { speaker: "Priti", text: "Ja, ich brauche Milch und Brot." },
-                    { speaker: "Shreya", text: "Okay. Ich sehe Milch hier." },
-                    { speaker: "Priti", text: "Super! Und wie viel kostet die Milch?" },
-                    { speaker: "Shreya", text: "Die Milch kostet zwei Euro." },
-                    { speaker: "Priti", text: "Das ist gut." },
-                    { speaker: "Shreya", text: "Kommst du auch in den Supermarkt?" },
-                    { speaker: "Priti", text: "Ja, ich komme in 10 Minuten." },
-                    { speaker: "Shreya", text: "Okay, bis gleich!" },
-                    { speaker: "Priti", text: "Bis gleich!" }
-                ]
-            }
-        };
+        // Global variables
+        let allConversations = {};
+        let availableVoices = [];
+
+        // Load voices asynchronously
+        function loadVoices() {
+            availableVoices = window.speechSynthesis.getVoices();
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
 
         // Text-to-Speech
-        function speakGerman(text) {
+        function speakGerman(text, isSecondSpeaker) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'de-DE';
                 utterance.rate = 0.85; 
+                utterance.pitch = 1.0; 
+
+                if (availableVoices.length === 0) {
+                    availableVoices = window.speechSynthesis.getVoices();
+                }
+
+                const germanVoices = availableVoices.filter(voice => voice.lang.includes('de'));
+
+                if (germanVoices.length > 0) {
+                    if (isSecondSpeaker) {
+                        const maleVoice = germanVoices.find(v => 
+                            v.name.toLowerCase().includes('male') || 
+                            v.name.toLowerCase().includes('stefan') ||  
+                            v.name.toLowerCase().includes('conrad') ||  
+                            v.name.toLowerCase().includes('killian') || 
+                            v.name.toLowerCase().includes('yannick') || 
+                            v.name.toLowerCase().includes('markus') ||  
+                            v.name.toLowerCase().includes('jonas')      
+                        );
+
+                        if (maleVoice) {
+                            utterance.voice = maleVoice;
+                        } else {
+                            utterance.voice = germanVoices[0];
+                            utterance.pitch = 0.4; 
+                        }
+                    } else {
+                        utterance.voice = germanVoices[0];
+                        utterance.pitch = 1.1; 
+                    }
+                }
                 window.speechSynthesis.speak(utterance);
             }
         }
 
-        // Render Conversation
+        // Render Conversation with Futuristic UI
         function loadConversation(convId) {
             const conversation = allConversations[convId];
             if (!conversation) return;
@@ -222,25 +203,26 @@
                 const alignOuter = isRightSide ? 'justify-end' : 'justify-start';
                 const alignInner = isRightSide ? 'items-end' : 'items-start';
                 
-                // Professional Bubble Styling
+                // FUTURISTIC BUBBLE STYLING
                 const bubbleColor = isRightSide 
-                    ? 'bg-blue-600 text-white rounded-2xl rounded-tr-sm shadow-sm' 
-                    : 'bg-white border border-slate-200 text-slate-800 rounded-2xl rounded-tl-sm shadow-sm';
+                    ? 'bg-cyan-950/60 backdrop-blur-md border border-cyan-800/40 border-r-2 border-r-cyan-400 text-cyan-50 rounded-2xl rounded-tr-sm shadow-[0_0_15px_rgba(34,211,238,0.05)]' 
+                    : 'bg-slate-800/80 backdrop-blur-md border border-slate-700/50 border-l-2 border-l-slate-400 text-slate-200 rounded-2xl rounded-tl-sm shadow-md';
                 
                 const speakerBtnColor = isRightSide
-                    ? 'text-blue-200 hover:text-white'
-                    : 'text-slate-400 hover:text-blue-600';
+                    ? 'text-cyan-500 hover:text-cyan-300 hover:scale-110 drop-shadow-[0_0_5px_rgba(34,211,238,0.3)]'
+                    : 'text-slate-400 hover:text-slate-200 hover:scale-110';
 
                 const row = document.createElement('div');
-                row.className = `flex w-full mb-5 ${alignOuter}`;
+                // Reduced bottom margin from mb-5 to mb-3 to keep conversations closer
+                row.className = `flex w-full mb-3 ${alignOuter}`; 
                 
                 row.innerHTML = `
-                    <div class="flex flex-col ${alignInner} max-w-[85%] sm:max-w-[75%]">
-                        <span class="text-[0.7rem] font-medium text-slate-500 mb-1 px-1">${msg.speaker}</span>
-                        <div class="p-3 sm:p-4 ${bubbleColor} transition-all duration-200 hover:shadow-md">
+                    <div class="flex flex-col ${alignInner} max-w-[90%] sm:max-w-[75%]">
+                        <span class="text-[0.65rem] font-mono tracking-widest text-slate-500 mb-1 px-1 uppercase">${msg.speaker}</span>
+                        <div class="p-3.5 sm:p-4 ${bubbleColor} transition-all duration-300 hover:shadow-lg">
                             <div class="flex items-start gap-3">
-                                <span class="text-base leading-relaxed msg-text"></span>
-                                <button class="msg-speak-btn flex-shrink-0 mt-0.5 ${speakerBtnColor} transition-colors focus:outline-none" title="Anhören">
+                                <span class="text-base leading-relaxed msg-text font-light tracking-wide"></span>
+                                <button class="msg-speak-btn flex-shrink-0 mt-0.5 ${speakerBtnColor} transition-all duration-200 focus:outline-none" title="Anhören">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>
                                 </button>
                             </div>
@@ -250,7 +232,7 @@
                 
                 row.querySelector('.msg-text').textContent = msg.text;
                 row.querySelector('.msg-speak-btn').addEventListener('click', () => {
-                    speakGerman(msg.text);
+                    speakGerman(msg.text, isRightSide);
                 });
 
                 convContainer.appendChild(row);
@@ -263,123 +245,26 @@
             menu.classList.toggle('hidden');
         }
 
-        // Navigation Logic 
-        function showSection(sectionId) {
-            const sections = ['sentences', 'conversations', 'words'];
-            
-            sections.forEach(s => {
-                const sectionEl = document.getElementById(`section-${s}`);
-                const navEl = document.getElementById(`nav-${s}`);
-                const mobNavEl = document.getElementById(`mob-nav-${s}`);
-                
-                if (s === sectionId) {
-                    sectionEl.classList.remove('hidden');
-                    sectionEl.classList.add('block');
-                    
-                    // Desktop Active
-                    navEl.className = "px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-700 bg-blue-50";
-                    // Mobile Active
-                    mobNavEl.className = "block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50";
-                } else {
-                    sectionEl.classList.add('hidden');
-                    sectionEl.classList.remove('block');
-                    
-                    // Desktop Inactive
-                    navEl.className = "px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-600 hover:bg-slate-100 hover:text-blue-600";
-                    // Mobile Inactive
-                    mobNavEl.className = "block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600";
-                }
-            });
-        }
-
-        // Initialize App
+        // Initialize App and Fetch Data
         document.addEventListener('DOMContentLoaded', () => {
-            const selector = document.getElementById('conversation-selector');
-            loadConversation(selector.value);
+            loadVoices();
+
+            fetch('conversations.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    allConversations = data;
+                    const selector = document.getElementById('conversation-selector');
+                    loadConversation(selector.value);
+                })
+                .catch(error => {
+                    console.error('Error loading conversations:', error);
+                    document.getElementById('conversation-container').innerHTML = 
+                        '<p class="text-red-500 w-full text-center">Fehler beim Laden der Gespräche. Stellen Sie sicher, dass Sie einen lokalen Server verwenden.</p>';
+                });
         });
-
-        // Existing Mobile Menu toggle
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    }
-
-    // Timer Logic
-    let timerInterval;
-    const STUDY_TIME = 20 * 60; // 20 minutes in seconds
-    let timeLeft = STUDY_TIME; 
-    let isRunning = false;
-
-    const playIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />`;
-    const pauseIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />`;
-
-    function updateDisplay() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        document.getElementById('timer-display').innerText = 
-            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    function playAlarm() {
-        // Uses the browser's Web Audio API to create a beep sound natively
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gainNode = ctx.createGain();
-        
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
-        
-        gainNode.gain.setValueAtTime(0.1, ctx.currentTime); // Volume control
-        
-        osc.connect(gainNode);
-        gainNode.connect(ctx.destination);
-        
-        osc.start();
-        osc.stop(ctx.currentTime + 1.5); // Beep duration: 1.5 seconds
-
-        setTimeout(() => {
-            alert("Die 20 Minuten sind um! Zeit für eine Pause.\n(20 minutes are up! Time for a break.)");
-        }, 100);
-    }
-
-    function toggleTimer() {
-        const btnIcon = document.getElementById('timer-icon');
-        
-        if (isRunning) {
-            // Pause the timer
-            clearInterval(timerInterval);
-            isRunning = false;
-            btnIcon.innerHTML = playIcon;
-        } else {
-            // Start the timer
-            isRunning = true;
-            btnIcon.innerHTML = pauseIcon;
-            
-            timerInterval = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateDisplay();
-                } else {
-                    // Time is up
-                    clearInterval(timerInterval);
-                    isRunning = false;
-                    playAlarm();
-                    resetTimer();
-                }
-            }, 1000);
-        }
-    }
-
-    function resetTimer() {
-        clearInterval(timerInterval);
-        isRunning = false;
-        timeLeft = STUDY_TIME;
-        updateDisplay();
-        document.getElementById('timer-icon').innerHTML = playIcon;
-    }
-
-    // Initialize display on load
-    document.addEventListener('DOMContentLoaded', updateDisplay);
     </script>
 </body>
 </html>

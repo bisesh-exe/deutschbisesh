@@ -98,6 +98,8 @@
             <option value="classroom">Häufig genutzte Unterrichtssätze</option>
             <option value="nominative">Nominativ (Nominative Case)</option>
             <option value="accusative">Akkusativ (Accusative Case)</option>
+            <option value="dativ">Dativ (Dativ Case)</option>
+
             <option value="weil">Sentences with weil</option>
             <option value="dass">Sentences with Dass</option>
             <option value="perfekt">Perfekt Sentences</option>
@@ -141,6 +143,7 @@
         <div class="text-sm text-slate-400">&copy; 2026. Alle Rechte vorbehalten.</div>
       </div>
     </footer>
+    <script src="timer.js"></script>
 
     <script>
       // ─── Data ────────────────────────────────────────────────────────────────
@@ -216,69 +219,11 @@
         document.getElementById("mobile-menu").classList.toggle("hidden");
       }
 
-      // ─── Timer ───────────────────────────────────────────────────────────────
-      const STUDY_TIME = 20 * 60;
-      let timerInterval = null;
-      let timeLeft = STUDY_TIME;
-      let isRunning = false;
-
-      const ICON_PLAY  = `<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />`;
-      const ICON_PAUSE = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />`;
-
-      function updateTimerDisplay() {
-        const m = Math.floor(timeLeft / 60).toString().padStart(2, "0");
-        const s = (timeLeft % 60).toString().padStart(2, "0");
-        document.getElementById("timer-display").textContent = `${m}:${s}`;
-      }
-
-      function playAlarm() {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(880, ctx.currentTime);
-        gain.gain.setValueAtTime(0.1, ctx.currentTime);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 1.5);
-        setTimeout(() => alert("Die 20 Minuten sind um! Zeit für eine Pause.\n(20 minutes are up! Time for a break.)"), 100);
-      }
-
-      function toggleTimer() {
-        const icon = document.getElementById("timer-icon");
-        if (isRunning) {
-          clearInterval(timerInterval);
-          isRunning = false;
-          icon.innerHTML = ICON_PLAY;
-        } else {
-          isRunning = true;
-          icon.innerHTML = ICON_PAUSE;
-          timerInterval = setInterval(() => {
-            if (timeLeft > 0) {
-              timeLeft--;
-              updateTimerDisplay();
-            } else {
-              clearInterval(timerInterval);
-              isRunning = false;
-              playAlarm();
-              resetTimer();
-            }
-          }, 1000);
-        }
-      }
-
-      function resetTimer() {
-        clearInterval(timerInterval);
-        isRunning = false;
-        timeLeft = STUDY_TIME;
-        updateTimerDisplay();
-        document.getElementById("timer-icon").innerHTML = ICON_PLAY;
-      }
-
       // ─── Init ────────────────────────────────────────────────────────────────
       document.addEventListener("DOMContentLoaded", () => {
-        updateTimerDisplay();
+        // Removed the broken timer function call. timer.js handles itself!
+        
+        // Load the initial category
         loadCategory(document.getElementById("category-selector").value);
       });
     </script>
