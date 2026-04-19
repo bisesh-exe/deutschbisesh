@@ -12,5 +12,31 @@
                 "For two people the apartment is a little small, but it's fine. We are very active and have already met a lot of people, which is great. And I now have a new hobby: I play tennis. I took a course and it's really fun. Maybe I'll join a club soon."
             ]
         }
+    },
+    
+  "lars_brinkhoff": {
+    "title": "Lars Brinkhoff",
+    "level": "B1",
+    "paragraphs": {
+      "de": [
+        "Ich wollte unbedingt Fotograf werden, weil ich Fotos liebe und schon als Kind gern fotografiert habe. Nach der Schule habe ich eine Ausbildung zum Fotografen gemacht - das war viel spannender als die Schule. Am Anfang hat mir die Ausbildung nicht gefallen, weil ich vieles noch nicht konnte. Jetzt habe ich schon lange ein Studio und mache am liebsten Fotos von Tieren. Für so ein Foto brauche ich viel Vorbereitung und natürlich auch nach dem Shooting viel Zeit am Computer. Das dauert manchmal lang, aber ich mache das total gern. Meine Fotos sollen perfekt sein und die Menschen glücklich machen - dann bin ich selbst am glücklichsten!"
+      ],
+      "en": [
+        "I really wanted to become a photographer because I love photos and enjoyed taking pictures as a child. After school, I completed an apprenticeship as a photographer – that was much more exciting than school. At the beginning, I didn't like the apprenticeship because there was still a lot I couldn't do. Now I have had my own studio for a long time and my favourite thing is taking photos of animals. For a photo like that, I need a lot of preparation and, of course, a lot of time on the computer after the shoot. Sometimes that takes a long time, but I really enjoy doing it. My photos should be perfect and make people happy – then I am happiest myself!"
+      ]
     }
+  },
+  "nadica_horvat": {
+    "title": "Nadica Horvat",
+    "level": "B1",
+    "paragraphs": {
+      "de": [
+        "Ich finde es toll, dass man Freunde und Bekannte so schnell und einfach informieren kann. Aber ich finde, dass das Handy nicht immer an sein muss und man zum Beispiel nicht jede Party posten muss. Das ist oft peinlich! Ein Kollege von mir hat zum Beispiel im Büro angerufen und gesagt, dass er krank ist. Am Abend hat er dann ein Foto gepostet: Er mit Freunden auf einer Party ... Er hat vergessen, dass seine Kollegen und seine Chefin das Foto sehen können. Jetzt sucht er einen neuen Job. Dumm, oder?"
+      ],
+      "en": [
+        "I think it's great that you can inform friends and acquaintances so quickly and easily. But I think that the mobile phone doesn't always have to be on and that you don't have to post every party, for example. That is often embarrassing! A colleague of mine, for example, called the office and said he was sick. In the evening he then posted a photo: him with friends at a party ... He forgot that his colleagues and his boss could see the photo. Now he is looking for a new job. Stupid, right?"
+      ]
+    }
+  }
+
 }
