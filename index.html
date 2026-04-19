@@ -9,7 +9,6 @@
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='34' y='0' fill='%23000000'/%3E%3Crect width='100' height='33' y='34' fill='%23DD0000'/%3E%3Crect width='100' height='33' y='67' fill='%23FFCC00'/%3E%3C/svg%3E"
     />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -24,65 +23,66 @@
     </script>
   </head>
   <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+
+    <!-- ===== NAV ===== -->
     <nav class="sticky top-0 z-50 bg-gradient-to-r from-black via-red-600 to-yellow-500 border-b border-slate-200 shadow-sm">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white hover:text-slate-200 transition-colors">
-        <span class="text-2xl">🇩🇪</span>
-        <span class="hidden sm:inline">Bchronicles Deutsch</span>
-        <span class="sm:hidden">Bchronicles</span>
-      </a>
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white hover:text-slate-200 transition-colors">
+            <span class="text-2xl">🇩🇪</span>
+            <span class="hidden sm:inline">Bchronicles Deutsch</span>
+            <span class="sm:hidden">Bchronicles</span>
+          </a>
 
-      <div class="flex items-center gap-4">
-        <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 shadow-inner">
-          <span id="timer-display" class="font-mono text-slate-700 font-semibold w-12 text-center">20:00</span>
-          <button onclick="toggleTimer()" class="text-blue-600 hover:text-blue-800 focus:outline-none transition-colors" title="Start/Pause Timer">
-            <svg id="timer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
-            </svg>
-          </button>
-          <button onclick="resetTimer()" class="text-slate-400 hover:text-slate-600 focus:outline-none transition-colors" title="Reset Timer">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-            </svg>
-          </button>
-        </div>
+          <div class="flex items-center gap-4">
+            <!-- Timer -->
+            <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 shadow-inner">
+              <span id="timer-display" class="font-mono text-slate-700 font-semibold w-12 text-center">20:00</span>
+              <button onclick="toggleTimer()" class="text-blue-600 hover:text-blue-800 focus:outline-none transition-colors" title="Start/Pause Timer">
+                <svg id="timer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
+                </svg>
+              </button>
+              <button onclick="resetTimer()" class="text-slate-400 hover:text-slate-600 focus:outline-none transition-colors" title="Reset Timer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+              </button>
+            </div>
 
-        <div class="hidden md:block">
-          <div class="flex space-x-2">
-            <a href="index.html"        class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 bg-white/50 hover:bg-white/70">Sätze</a>
-            <a href="conversation.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Gespräche</a>
-            <a href="words.html"        class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Wörter</a>
-            <a href="lesen.html"        class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Lesen</a>
+            <!-- Desktop nav links -->
+            <div class="hidden md:flex space-x-2">
+              <a href="index.html"        class="px-4 py-2 rounded-md text-sm font-medium text-slate-900 bg-white/50 hover:bg-white/70 transition-all duration-200">Sätze</a>
+              <a href="conversation.html" class="px-4 py-2 rounded-md text-sm font-medium text-slate-900 hover:bg-white/30 transition-all duration-200">Gespräche</a>
+              <a href="words.html"        class="px-4 py-2 rounded-md text-sm font-medium text-slate-900 hover:bg-white/30 transition-all duration-200">Wörter</a>
+              <a href="lesen.html"        class="px-4 py-2 rounded-md text-sm font-medium text-slate-900 hover:bg-white/30 transition-all duration-200">Lesen</a>
+            </div>
+
+            <!-- Mobile hamburger -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-slate-900 hover:text-white p-2 rounded-md hover:bg-white/20 transition-colors">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
           </div>
         </div>
+      </div>
 
-        <div class="md:hidden flex items-center">
-          <button onclick="toggleMobileMenu()" class="text-slate-900 hover:text-white focus:outline-none p-2 rounded-md hover:bg-white/20 transition-colors">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+          <a href="index.html"        class="block px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Sätze</a>
+          <a href="conversation.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Gespräche</a>
+          <a href="words.html"        class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Wörter</a>
+          <a href="lesen.html"        class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Lesen</a>
         </div>
       </div>
-    </div>
-  </div>
+    </nav>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
-    <div class="px-4 pt-2 pb-4 space-y-1">
-      <a href="index.html"        class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Sätze</a>
-      <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Gespräche</a>
-      <a href="words.html"        class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Wörter</a>
-      <a href="lesen.html"        class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Lesen</a>
-    </div>
-  </div>
-</nav>
-
+    <!-- ===== MAIN ===== -->
     <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-8 sm:py-12">
       <div class="text-center mb-10 space-y-4">
-        <h1
-          class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900"
-        >
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
           Wichtige Sätze (Sentences)
         </h1>
         <p class="text-slate-500 text-lg">
@@ -92,7 +92,7 @@
         <div class="relative w-full sm:w-1/2 mx-auto mt-6">
           <select
             id="category-selector"
-            onchange="updateSentences(this.value)"
+            onchange="loadCategory(this.value)"
             class="w-full appearance-none bg-white border border-slate-300 text-slate-700 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 py-3 pl-4 pr-10 shadow-sm cursor-pointer transition-shadow hover:shadow-md"
           >
             <option value="classroom">Häufig genutzte Unterrichtssätze</option>
@@ -105,888 +105,160 @@
             <option value="direkt">Direkt Questions</option>
             <option value="indirekt">Indirekt Questions</option>
           </select>
-          <div
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </div>
         </div>
       </div>
 
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        id="sentences-container"
-      ></div>
+      <!-- Loading state -->
+      <div id="loading" class="text-center py-12 text-slate-400 hidden">
+        <svg class="animate-spin h-8 w-8 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+        </svg>
+        Loading sentences…
+      </div>
+
+      <!-- Error state -->
+      <div id="error" class="hidden text-center py-12 text-red-500 font-medium">
+        Could not load <code>sentences.json</code>. Make sure the file is in the same folder as this HTML file.
+      </div>
+
+      <!-- Cards grid -->
+      <div id="sentences-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="mt-auto border-t border-slate-200 bg-white">
-      <div
-        class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
-      >
+      <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div>
-          <p class="text-sm font-semibold text-slate-700">
-            Bchronicles Deutsch
-          </p>
-          <p class="text-xs text-slate-500 mt-1">
-            Lernportal für die deutsche Sprache (A2)
-          </p>
+          <p class="text-sm font-semibold text-slate-700">Bchronicles Deutsch</p>
+          <p class="text-xs text-slate-500 mt-1">Lernportal für die deutsche Sprache (A2)</p>
         </div>
-        <div class="text-sm text-slate-400">
-          &copy; 2026. Alle Rechte vorbehalten.
-        </div>
+        <div class="text-sm text-slate-400">&copy; 2026. Alle Rechte vorbehalten.</div>
       </div>
     </footer>
 
     <script>
-      // Data categorized for future expansion
-      const sentenceCategories = {
-        classroom: [
-          {
-            en: "Can you please repeat? I can't hear you.",
-            de: "Können Sie bitte wiederholen? Ich kann Sie nicht hören.",
-          },
-          {
-            en: "Which number are you talking about?",
-            de: "Welche Nummer meinen Sie?",
-          },
-          { en: "What is the page number?", de: "Was ist die Seitenzahl?" },
-          {
-            en: "When will we finish our course?",
-            de: "Wann beenden wir unseren Kurs?",
-          },
-          {
-            en: "I was late to class because of heavy traffic.",
-            de: "Ich war wegen starkem Verkehr zu spät zum Unterricht.",
-          },
-          {
-            en: "I couldn't catch the bus on time.",
-            de: "Ich habe den Bus nicht rechtzeitig bekommen.",
-          },
-          {
-            en: "I haven't done the writing part.",
-            de: "Ich habe den Schreibteil nicht gemacht.",
-          },
-          {
-            en: "I couldn't do the homework because I was busy.",
-            de: "Ich konnte die Hausaufgaben nicht machen, weil ich beschäftigt war.",
-          },
-          {
-            en: "Hello sir, I cannot come to class tomorrow.",
-            de: "Hallo Herr, ich kann morgen nicht zum Unterricht kommen.",
-          },
-          {
-            en: "What is the answer to question 9a?",
-            de: "Was ist die Antwort auf Frage 9a?",
-          },
-          {
-            en: "I didn't understand the meaning of 'Spiegel.'",
-            de: 'Ich habe die Bedeutung von „Spiegel" nicht verstanden.',
-          },
-          {
-            en: "I forgot the key at my house.",
-            de: "Ich habe den Schlüssel zu Hause vergessen.",
-          },
-          {
-            en: "What is the price of this pencil?",
-            de: "Was kostet dieser Bleistift?",
-          },
-          {
-            en: "Sorry sir, I couldn't hear.",
-            de: "Entschuldigung Herr, ich konnte nicht hören.",
-          },
-          {
-            en: "Can we hear the sound once again?",
-            de: "Können wir den Ton noch einmal hören?",
-          },
-          {
-            en: "Can we see the video once again?",
-            de: "Können wir das Video noch einmal sehen?",
-          },
-          {
-            en: "I am cooking the food by myself.",
-            de: "Ich koche das Essen selbst.",
-          },
-          {
-            en: "Can you speak more slowly, please?",
-            de: "Können Sie bitte langsamer sprechen?",
-          },
-          {
-            en: "Can you explain it again?",
-            de: "Können Sie das noch einmal erklären?",
-          },
-          { en: "I don't understand this.", de: "Ich verstehe das nicht." },
-          {
-            en: "How do you say this in German?",
-            de: "Wie sagt man das auf Deutsch?",
-          },
-          { en: "What does this word mean?", de: "Was bedeutet dieses Wort?" },
-          {
-            en: "Can you write it on the board?",
-            de: "Können Sie das an die Tafel schreiben?",
-          },
-          { en: "May I come in?", de: "Darf ich reinkommen?" },
-          { en: "May I go out?", de: "Darf ich rausgehen?" },
-          { en: "I have a question.", de: "Ich habe eine Frage." },
-          {
-            en: "Can you help me, please?",
-            de: "Können Sie mir bitte helfen?",
-          },
-          { en: "I don't know the answer.", de: "Ich weiß die Antwort nicht." },
-          { en: "Can I sit here?", de: "Kann ich hier sitzen?" },
-          { en: "What are we doing today?", de: "Was machen wir heute?" },
-          {
-            en: "Do we have homework today?",
-            de: "Haben wir heute Hausaufgaben?",
-          },
-          { en: "I forgot my book.", de: "Ich habe mein Buch vergessen." },
-          {
-            en: "Can you check my answer?",
-            de: "Können Sie meine Antwort prüfen?",
-          },
-          { en: "Is this correct?", de: "Ist das richtig?" },
-          {
-            en: "Can you repeat the question?",
-            de: "Können Sie die Frage wiederholen?",
-          },
-          { en: "I need more time.", de: "Ich brauche mehr Zeit." },
-          { en: "I finished my work.", de: "Ich habe meine Arbeit fertig." },
-          {
-            en: "Hello! How are you today?",
-            de: "Hallo! Wie geht es Ihnen heute?",
-          },
-          {
-            en: "Good morning! Did you sleep well?",
-            de: "Guten Morgen! Haben Sie gut geschlafen?",
-          },
-          {
-            en: "Good afternoon! How is your day going?",
-            de: "Guten Tag! Wie läuft Ihr Tag?",
-          },
-          {
-            en: "Good evening! How was your day?",
-            de: "Guten Abend! Wie war Ihr Tag?",
-          },
-          {
-            en: "Goodbye! See you tomorrow.",
-            de: "Auf Wiedersehen! Bis morgen.",
-          },
-          {
-            en: "See you later! Take care.",
-            de: "Bis später! Passen Sie auf sich auf.",
-          },
-          {
-            en: "How are you feeling today?",
-            de: "Wie fühlen Sie sich heute?",
-          },
-          {
-            en: "I am doing well, thank you. And you?",
-            de: "Mir geht es gut, danke. Und Ihnen?",
-          },
-          {
-            en: "Nice to meet you. Where are you from?",
-            de: "Freut mich, Sie kennenzulernen. Woher kommen Sie?",
-          },
-          {
-            en: "It's nice to see you again.",
-            de: "Es ist schön, Sie wiederzusehen.",
-          },
-          { en: "What is your name?", de: "Wie heißen Sie?" },
-          {
-            en: "My name is Bisesh. Nice to meet you.",
-            de: "Ich heiße Bisesh. Freut mich, Sie kennenzulernen.",
-          },
-          { en: "Where do you live now?", de: "Wo wohnen Sie jetzt?" },
-          {
-            en: "Congratulations on your success!",
-            de: "Herzlichen Glückwunsch zu Ihrem Erfolg!",
-          },
-          {
-            en: "Good luck with your exam!",
-            de: "Viel Glück bei Ihrer Prüfung!",
-          },
-          {
-            en: "Have a nice day and take care!",
-            de: "Ich wünsche Ihnen einen schönen Tag. Passen Sie auf sich auf!",
-          },
-          {
-            en: "Thank you very much for your help.",
-            de: "Vielen Dank für Ihre Hilfe.",
-          },
-          {
-            en: "You're welcome, no problem.",
-            de: "Gern geschehen, kein Problem.",
-          },
-          {
-            en: "Can we talk later? I am a bit busy now.",
-            de: "Können wir später sprechen? Ich bin jetzt etwas beschäftigt.",
-          },
-          {
-            en: "I hope to see you again soon.",
-            de: "Ich hoffe, wir sehen uns bald wieder.",
-          },
-        ],
-        nominative: [
-          {
-            en: "The new teacher is very friendly.",
-            de: "<strong>Der neue Lehrer</strong> ist sehr freundlich.",
-          },
-          {
-            en: "The big house belongs to my aunt.",
-            de: "<strong>Das große Haus</strong> gehört meiner Tante.",
-          },
-          {
-            en: "The beautiful cat is sleeping on the sofa.",
-            de: "<strong>Die schöne Katze</strong> schläft auf dem Sofa.",
-          },
-          {
-            en: "A red car is parked in front of the door.",
-            de: "<strong>Ein rotes Auto</strong> steht vor der Tür.",
-          },
-          {
-            en: "My parents live in Berlin.",
-            de: "<strong>Meine Eltern</strong> wohnen in Berlin.",
-          },
-          {
-            en: "The cold winter is coming soon.",
-            de: "<strong>Der kalte Winter</strong> kommt bald.",
-          },
-          {
-            en: "The interesting book is lying on the table.",
-            de: "<strong>Das interessante Buch</strong> liegt auf dem Tisch.",
-          },
-          {
-            en: "His little sister is named Anna.",
-            de: "<strong>Seine kleine Schwester</strong> heißt Anna.",
-          },
-          {
-            en: "A good friend always helps.",
-            de: "<strong>Ein guter Freund</strong> hilft immer.",
-          },
-          {
-            en: "The soup tastes really delicious.",
-            de: "<strong>Die Suppe</strong> schmeckt wirklich lecker.",
-          },
-        ],
-        accusative: [
-          {
-            en: "I am buying a new computer.",
-            de: "Ich kaufe <strong>einen neuen Computer</strong>.",
-          },
-          {
-            en: "We are visiting our sick grandpa in the hospital.",
-            de: "Wir besuchen <strong>unseren kranken Opa</strong> im Krankenhaus.",
-          },
-          {
-            en: "Do you see the black dog over there?",
-            de: "Siehst du <strong>den schwarzen Hund</strong> dort drüben?",
-          },
-          {
-            en: "He drinks a strong coffee every morning.",
-            de: "Er trinkt jeden Morgen <strong>einen starken Kaffee</strong>.",
-          },
-          {
-            en: "The gift is for my best friend.",
-            de: "Das Geschenk ist für <strong>meinen besten Freund</strong>.",
-          },
-          {
-            en: "We are currently reading an exciting novel.",
-            de: "Wir lesen gerade <strong>einen spannenden Roman</strong>.",
-          },
-          {
-            en: "Please call me tomorrow evening!",
-            de: "Bitte ruf <strong>mich</strong> morgen Abend an!",
-          },
-          {
-            en: "The children really like eating the sweet cake.",
-            de: "Die Kinder essen <strong>den süßen Kuchen</strong> sehr gerne.",
-          },
-          {
-            en: "I unfortunately forgot my key.",
-            de: "Ich habe <strong>meinen Schlüssel</strong> leider vergessen.",
-          },
-          {
-            en: "Are we going for a walk through the big park?",
-            de: "Gehen wir durch <strong>den großen Park</strong> spazieren?",
-          },
-        ],
-        dative: [
-          {
-            en: "The car belongs to my older brother.",
-            de: "Das Auto gehört <strong>meinem älteren Bruder</strong>.",
-          },
-          {
-            en: "I am helping the old woman with the bags.",
-            de: "Ich helfe <strong>der alten Frau</strong> mit den Taschen.",
-          },
-          {
-            en: "We are traveling to Munich with the fast train.",
-            de: "Wir fahren mit <strong>dem schnellen Zug</strong> nach München.",
-          },
-          {
-            en: "How are your parents doing today?",
-            de: "Wie geht es <strong>deinen Eltern</strong> heute?",
-          },
-          {
-            en: "The food tastes very good to the guests.",
-            de: "Das Essen schmeckt <strong>den Gästen</strong> sehr gut.",
-          },
-          {
-            en: "I have lived in this city for a year.",
-            de: "Ich wohne seit <strong>einem Jahr</strong> in dieser Stadt.",
-          },
-          {
-            en: "He is answering his boss's email.",
-            de: "Er antwortet <strong>seinem Chef</strong> auf die E-Mail.",
-          },
-          {
-            en: "Do you like my new t-shirt?",
-            de: "Gefällt <strong>dir</strong> mein neues T-Shirt?",
-          },
-          {
-            en: "She is just coming home from work.",
-            de: "Sie kommt gerade von <strong>der Arbeit</strong> nach Hause.",
-          },
-          {
-            en: "I thank you [formal] for the help.",
-            de: "Ich danke <strong>Ihnen</strong> für die Hilfe.",
-          },
-        ],
-        weil: [
-          {
-            en: "I'm learning German because it's interesting.",
-            de: "Ich lerne Deutsch, weil es interessant ist.",
-          },
-          {
-            en: "He stays at home because he's sick.",
-            de: "Er bleibt zu Hause, weil er krank ist.",
-          },
-          {
-            en: "She drinks tea because she doesn't like coffee.",
-            de: "Sie trinkt Tee, weil sie Kaffee nicht mag.",
-          },
-          {
-            en: "We're not going out because it's raining.",
-            de: "Wir gehen nicht aus, weil es regnet.",
-          },
-          {
-            en: "I'm tired because I slept late yesterday.",
-            de: "Ich bin müde, weil ich gestern spät geschlafen habe.",
-          },
-          {
-            en: "He studies a lot because he wants to pass the exam.",
-            de: "Er lernt viel, weil er die Prüfung bestehen möchte.",
-          },
-          {
-            en: "She's happy because she found a new job.",
-            de: "Sie ist glücklich, weil sie eine neue Arbeit gefunden hat.",
-          },
-          {
-            en: "I'm buying this book because it's affordable.",
-            de: "Ich kaufe dieses Buch, weil es günstig ist.",
-          },
-          {
-            en: "We take the bus because the car is broken.",
-            de: "Wir nehmen den Bus, weil das Auto kaputt ist.",
-          },
-          {
-            en: "He doesn't eat meat because he's a vegetarian.",
-            de: "Er isst kein Fleisch, weil er Vegetarier ist.",
-          },
-          {
-            en: "I'm calling you because I need your help.",
-            de: "Ich rufe dich an, weil ich deine Hilfe brauche.",
-          },
-          {
-            en: "She's wearing a coat because it's cold.",
-            de: "Sie trägt einen Mantel, weil es kalt ist.",
-          },
-          {
-            en: "We're happy because vacation is soon.",
-            de: "Wir freuen uns, weil bald Urlaub ist.",
-          },
-          {
-            en: "He writes slowly because he's careful.",
-            de: "Er schreibt langsam, weil er aufmerksam ist.",
-          },
-          {
-            en: "I like this film because it's funny.",
-            de: "Ich mag diesen Film, weil er lustig ist.",
-          },
-          {
-            en: "She sleeps early because she has to get up early tomorrow.",
-            de: "Sie schläft früh, weil sie morgen früh aufstehen muss.",
-          },
-          {
-            en: "He helps her because he's kind.",
-            de: "Er hilft ihr, weil er nett ist.",
-          },
-          {
-            en: "We cook at home because restaurants are expensive.",
-            de: "Wir kochen zu Hause, weil Restaurants teuer sind.",
-          },
-          {
-            en: "I read every day because I love books.",
-            de: "Ich lese jeden Tag, weil ich Bücher liebe.",
-          },
-          {
-            en: "She's laughing because the joke is funny.",
-            de: "Sie lacht, weil der Witz lustig ist.",
-          },
-        ],
+      // ─── Data ────────────────────────────────────────────────────────────────
+      // All sentence data lives in sentences.json (same directory).
+      // We cache it after the first fetch to avoid repeated network requests.
+      let sentenceData = null;
 
-        dass: [
-          {
-            en: "I believe that he's right.",
-            de: "Ich glaube, dass er Recht hat.",
-          },
-          {
-            en: "She knows that it's difficult.",
-            de: "Sie weiß, dass das schwierig ist.",
-          },
-          {
-            en: "He hopes that the weather will get better.",
-            de: "Er hofft, dass das Wetter besser wird.",
-          },
-          {
-            en: "We think that you can come.",
-            de: "Wir denken, dass du kommen kannst.",
-          },
-          {
-            en: "I think that Berlin is beautiful.",
-            de: "Ich finde, dass Berlin schön ist.",
-          },
-          {
-            en: "She says that she's tired.",
-            de: "Sie sagt, dass sie müde ist.",
-          },
-          {
-            en: "He knows that you work tomorrow.",
-            de: "Er weiß, dass du morgen arbeitest.",
-          },
-          {
-            en: "I'm glad that you're here.",
-            de: "Ich freue mich, dass du hier bist.",
-          },
-          {
-            en: "We hope that it doesn't rain.",
-            de: "Wir hoffen, dass es nicht regnet.",
-          },
-          {
-            en: "She believes that the train will come on time.",
-            de: "Sie glaubt, dass der Zug pünktlich kommt.",
-          },
-          {
-            en: "It's nice that you help me.",
-            de: "Es ist schön, dass du mir hilfst.",
-          },
-          {
-            en: "I know that he lives in Vienna.",
-            de: "Ich weiß, dass er in Wien wohnt.",
-          },
-          {
-            en: "He says that he's not hungry.",
-            de: "Er sagt, dass er keinen Hunger hat.",
-          },
-          {
-            en: "We know that the exam is tomorrow.",
-            de: "Wir wissen, dass die Prüfung morgen ist.",
-          },
-          {
-            en: "She thinks that it's a good idea.",
-            de: "Sie denkt, dass das eine gute Idee ist.",
-          },
-          {
-            en: "I hear that you're planning a trip.",
-            de: "Ich höre, dass du eine Reise planst.",
-          },
-          {
-            en: "It's clear that he's learning German.",
-            de: "Es ist klar, dass er Deutsch lernt.",
-          },
-          {
-            en: "He hopes that she calls him.",
-            de: "Er hofft, dass sie ihn anruft.",
-          },
-          {
-            en: "I think it's good that you do sport.",
-            de: "Ich finde es gut, dass du Sport machst.",
-          },
-          {
-            en: "She's glad that the work is done.",
-            de: "Sie ist froh, dass die Arbeit fertig ist.",
-          },
-        ],
+      async function fetchSentences() {
+        if (sentenceData) return sentenceData;
+        const res = await fetch("sentences.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        sentenceData = await res.json();
+        return sentenceData;
+      }
 
-        perfekt: [
-          {
-            en: "I drank coffee this morning.",
-            de: "Ich habe heute Morgen Kaffee getrunken.",
-          },
-          {
-            en: "He read a book yesterday.",
-            de: "Er hat gestern ein Buch gelesen.",
-          },
-          { en: "We ate pizza.", de: "Wir haben Pizza gegessen." },
-          { en: "She wrote a letter.", de: "Sie hat einen Brief geschrieben." },
-          { en: "I went to school.", de: "Ich bin zur Schule gegangen." },
-          { en: "He drove to Berlin.", de: "Er ist nach Berlin gefahren." },
-          { en: "We listened to music.", de: "Wir haben Musik gehört." },
-          { en: "She opened the window.", de: "Sie hat das Fenster geöffnet." },
-          {
-            en: "I did my homework.",
-            de: "Ich habe meine Hausaufgaben gemacht.",
-          },
-          {
-            en: "He called his sister.",
-            de: "Er hat seine Schwester angerufen.",
-          },
-          { en: "We walked in the park.", de: "Wir sind im Park spaziert." },
-          { en: "They learned German.", de: "Sie haben Deutsch gelernt." },
-          { en: "I watched a film.", de: "Ich habe einen Film gesehen." },
-          { en: "He got up early.", de: "Er ist früh aufgestanden." },
-          { en: "We washed the car.", de: "Wir haben das Auto gewaschen." },
-          { en: "She played the piano.", de: "Sie hat Klavier gespielt." },
-          { en: "I woke up at 8 o'clock.", de: "Ich bin um 8 Uhr aufgewacht." },
-          { en: "He worked a lot.", de: "Er hat viel gearbeitet." },
-          { en: "We danced yesterday.", de: "Wir haben gestern getanzt." },
-          { en: "She came home.", de: "Sie ist nach Hause gekommen." },
-        ],
+      // ─── Render ──────────────────────────────────────────────────────────────
+      async function loadCategory(category) {
+        const container = document.getElementById("sentences-container");
+        const loading   = document.getElementById("loading");
+        const error     = document.getElementById("error");
 
-        modalverben: [
-          {
-            en: "I can speak German well.",
-            de: "Ich kann gut Deutsch sprechen.",
-          },
-          { en: "He has to work today.", de: "Er muss heute arbeiten." },
-          {
-            en: "We want to travel to Austria.",
-            de: "Wir wollen nach Österreich reisen.",
-          },
-          {
-            en: "She isn't allowed to smoke here.",
-            de: "Sie darf hier nicht rauchen.",
-          },
-          {
-            en: "I would like to order a coffee.",
-            de: "Ich möchte einen Kaffee bestellen.",
-          },
-          {
-            en: "He is supposed to come at 9 o'clock.",
-            de: "Er soll um 9 Uhr kommen.",
-          },
-          {
-            en: "We have to do the homework.",
-            de: "Wir müssen die Hausaufgaben machen.",
-          },
-          { en: "She can cook very well.", de: "Sie kann sehr gut kochen." },
-          { en: "I want to become a doctor.", de: "Ich will Arzt werden." },
-          {
-            en: "He's not allowed to eat ice cream.",
-            de: "Er darf kein Eis essen.",
-          },
-          {
-            en: "We would like to reserve a room.",
-            de: "Wir möchten ein Zimmer reservieren.",
-          },
-          {
-            en: "She's supposed to drink more water.",
-            de: "Sie soll mehr Wasser trinken.",
-          },
-          {
-            en: "I have to get up early today.",
-            de: "Ich muss heute früh aufstehen.",
-          },
-          { en: "He can't swim.", de: "Er kann nicht schwimmen." },
-          { en: "We want to buy a dog.", de: "Wir wollen einen Hund kaufen." },
-          {
-            en: "They're allowed to visit the museum.",
-            de: "Sie dürfen das Museum besuchen.",
-          },
-          { en: "I would like to sleep.", de: "Ich möchte gern schlafen." },
-          {
-            en: "He's supposed to tidy the room.",
-            de: "Er soll das Zimmer aufräumen.",
-          },
-          {
-            en: "We can study together tomorrow.",
-            de: "Wir können morgen zusammen lernen.",
-          },
-          {
-            en: "She has to go home now.",
-            de: "Sie muss jetzt nach Hause gehen.",
-          },
-        ],
-        direkt: [
-          { en: "Where do you live?", de: "Wo wohnst du?" },
-          { en: "What are you doing tomorrow?", de: "Was machst du morgen?" },
-          { en: "How old are you?", de: "Wie alt bist du?" },
-          { en: "When does the train arrive?", de: "Wann kommt der Zug an?" },
-          { en: "Who is that woman?", de: "Wer ist diese Frau?" },
-          {
-            en: "How much does this jacket cost?",
-            de: "Wie viel kostet diese Jacke?",
-          },
-          {
-            en: "Why are you so tired today?",
-            de: "Warum bist du heute so müde?",
-          },
-          {
-            en: "Which bus goes to the city centre?",
-            de: "Welcher Bus fährt ins Stadtzentrum?",
-          },
-          {
-            en: "Where did you buy this bag?",
-            de: "Wo hast du diese Tasche gekauft?",
-          },
-          {
-            en: "How long have you been learning German?",
-            de: "Wie lange lernst du schon Deutsch?",
-          },
-          { en: "What is your name?", de: "Wie heißt du?" },
-          { en: "Where are you from?", de: "Woher kommst du?" },
-          {
-            en: "What did you eat for breakfast?",
-            de: "Was hast du zum Frühstück gegessen?",
-          },
-          { en: "How do you get to work?", de: "Wie kommst du zur Arbeit?" },
-          {
-            en: "With whom did you go to the cinema?",
-            de: "Mit wem bist du ins Kino gegangen?",
-          },
-          {
-            en: "What time does the shop open?",
-            de: "Wann öffnet das Geschäft?",
-          },
-          {
-            en: "How many siblings do you have?",
-            de: "Wie viele Geschwister hast du?",
-          },
-          {
-            en: "Where are you going on holiday?",
-            de: "Wohin fährst du im Urlaub?",
-          },
-          {
-            en: "What kind of music do you like?",
-            de: "Was für Musik magst du?",
-          },
-          {
-            en: "Why did you come home so late?",
-            de: "Warum bist du so spät nach Hause gekommen?",
-          },
-        ],
+        container.innerHTML = "";
+        error.classList.add("hidden");
+        loading.classList.remove("hidden");
 
-        indirekt: [
-          {
-            en: "I don't know where he lives.",
-            de: "Ich weiß nicht, wo er wohnt.",
-          },
-          {
-            en: "Can you tell me what time it is?",
-            de: "Kannst du mir sagen, wie spät es ist?",
-          },
-          {
-            en: "She asks whether the supermarket is still open.",
-            de: "Sie fragt, ob der Supermarkt noch offen ist.",
-          },
-          {
-            en: "I don't know when the film starts.",
-            de: "Ich weiß nicht, wann der Film anfängt.",
-          },
-          {
-            en: "Do you know how much the ticket costs?",
-            de: "Weißt du, wie viel die Karte kostet?",
-          },
-          {
-            en: "He doesn't know whether she is coming.",
-            de: "Er weiß nicht, ob sie kommt.",
-          },
-          {
-            en: "I would like to know where the station is.",
-            de: "Ich möchte wissen, wo der Bahnhof ist.",
-          },
-          {
-            en: "Can you tell me which bus goes to the airport?",
-            de: "Kannst du mir sagen, welcher Bus zum Flughafen fährt?",
-          },
-          {
-            en: "She doesn't know why he is angry.",
-            de: "Sie weiß nicht, warum er wütend ist.",
-          },
-          {
-            en: "Do you know how long the journey takes?",
-            de: "Weißt du, wie lange die Fahrt dauert?",
-          },
-          {
-            en: "I don't know what his name is.",
-            de: "Ich weiß nicht, wie er heißt.",
-          },
-          {
-            en: "She asks whether he has already eaten.",
-            de: "Sie fragt, ob er schon gegessen hat.",
-          },
-          {
-            en: "Do you know where I can buy a ticket?",
-            de: "Weißt du, wo ich eine Karte kaufen kann?",
-          },
-          {
-            en: "I don't know whether the museum is open on Sunday.",
-            de: "Ich weiß nicht, ob das Museum sonntags geöffnet ist.",
-          },
-          {
-            en: "Can you tell me how I get to the hospital?",
-            de: "Kannst du mir sagen, wie ich zum Krankenhaus komme?",
-          },
-          {
-            en: "He doesn't know what time the concert starts.",
-            de: "Er weiß nicht, wann das Konzert anfängt.",
-          },
-          {
-            en: "I would like to know where she works.",
-            de: "Ich möchte wissen, wo sie arbeitet.",
-          },
-          {
-            en: "Do you know whether there is a pharmacy nearby?",
-            de: "Weißt du, ob es eine Apotheke in der Nähe gibt?",
-          },
-          {
-            en: "She doesn't know how much the room costs.",
-            de: "Sie weiß nicht, wie viel das Zimmer kostet.",
-          },
-          {
-            en: "I don't know with whom he traveled to Berlin.",
-            de: "Ich weiß nicht, mit wem er nach Berlin gereist ist.",
-          },
-        ],
-      };
+        try {
+          const data    = await fetchSentences();
+          const phrases = data[category] ?? [];
+          loading.classList.add("hidden");
 
-      function speakGerman(text) {
-        if ("speechSynthesis" in window) {
-          window.speechSynthesis.cancel();
-          // Strip out the HTML <strong> tags before speaking so it doesn't read them out loud
-          const plainText = text.replace(/<\/?[^>]+(>|$)/g, "");
-          const utterance = new SpeechSynthesisUtterance(plainText);
-          utterance.lang = "de-DE";
-          utterance.rate = 0.85;
-          window.speechSynthesis.speak(utterance);
+          phrases.forEach((phrase, index) => {
+            const card = document.createElement("div");
+            card.className =
+              "bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+
+            card.innerHTML = `
+              <div>
+                <span class="text-[0.7rem] font-bold text-slate-400 uppercase tracking-widest">Satz #${index + 1}</span>
+                <p class="text-slate-500 text-sm mt-2 mb-1 italic">${phrase.en}</p>
+                <p class="text-slate-800 text-lg font-medium leading-snug">${phrase.de}</p>
+              </div>
+              <button class="mt-4 flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg bg-slate-50 border border-slate-200 text-blue-600 font-medium hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>
+                </svg>
+                Listen
+              </button>
+            `;
+
+            card.querySelector("button").addEventListener("click", () => speakGerman(phrase.de));
+            container.appendChild(card);
+          });
+        } catch (err) {
+          loading.classList.add("hidden");
+          error.classList.remove("hidden");
+          console.error(err);
         }
       }
 
+      // ─── Speech ──────────────────────────────────────────────────────────────
+      function speakGerman(text) {
+        if (!("speechSynthesis" in window)) return;
+        window.speechSynthesis.cancel();
+        const plainText = text.replace(/<\/?[^>]+(>|$)/g, "");
+        const utterance = new SpeechSynthesisUtterance(plainText);
+        utterance.lang = "de-DE";
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      // ─── Mobile menu ─────────────────────────────────────────────────────────
       function toggleMobileMenu() {
-        const menu = document.getElementById("mobile-menu");
-        menu.classList.toggle("hidden");
+        document.getElementById("mobile-menu").classList.toggle("hidden");
       }
 
-      function updateSentences(category) {
-        const container = document.getElementById("sentences-container");
-        const phrases = sentenceCategories[category];
-        container.innerHTML = "";
-
-        phrases.forEach((phrase, index) => {
-          const card = document.createElement("div");
-          card.className =
-            "bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
-
-          card.innerHTML = `
-                    <div>
-                        <span class="text-[0.7rem] font-bold text-slate-400 uppercase tracking-widest">Satz #${index + 1}</span>
-                        <p class="text-slate-500 text-sm mt-2 mb-1 italic">${phrase.en}</p>
-                        <p class="text-slate-800 text-lg font-medium leading-snug">${phrase.de}</p>
-                    </div>
-                    <button class="mt-4 flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg bg-slate-50 border border-slate-200 text-blue-600 font-medium hover:bg-blue-50 hover:border-blue-200 transition-all duration-200">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>
-                        Listen
-                    </button>
-                `;
-
-          card
-            .querySelector("button")
-            .addEventListener("click", () => speakGerman(phrase.de));
-          container.appendChild(card);
-        });
-      }
-
-      // Initialize with default category
-      document.addEventListener("DOMContentLoaded", () => {
-        updateSentences("classroom");
-      });
-
-      // Existing Mobile Menu toggle
-      function toggleMobileMenu() {
-        const menu = document.getElementById("mobile-menu");
-        menu.classList.toggle("hidden");
-      }
-
-      // Timer Logic
-      let timerInterval;
-      const STUDY_TIME = 20 * 60; // 20 minutes in seconds
+      // ─── Timer ───────────────────────────────────────────────────────────────
+      const STUDY_TIME = 20 * 60;
+      let timerInterval = null;
       let timeLeft = STUDY_TIME;
       let isRunning = false;
 
-      const playIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />`;
-      const pauseIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />`;
+      const ICON_PLAY  = `<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />`;
+      const ICON_PAUSE = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />`;
 
-      function updateDisplay() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        document.getElementById("timer-display").innerText =
-          `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      function updateTimerDisplay() {
+        const m = Math.floor(timeLeft / 60).toString().padStart(2, "0");
+        const s = (timeLeft % 60).toString().padStart(2, "0");
+        document.getElementById("timer-display").textContent = `${m}:${s}`;
       }
 
       function playAlarm() {
-        // Uses the browser's Web Audio API to create a beep sound natively
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
-        const gainNode = ctx.createGain();
-
+        const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
-
-        gainNode.gain.setValueAtTime(0.1, ctx.currentTime); // Volume control
-
-        osc.connect(gainNode);
-        gainNode.connect(ctx.destination);
-
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
         osc.start();
-        osc.stop(ctx.currentTime + 1.5); // Beep duration: 1.5 seconds
-
-        setTimeout(() => {
-          alert(
-            "Die 20 Minuten sind um! Zeit für eine Pause.\n(20 minutes are up! Time for a break.)",
-          );
-        }, 100);
+        osc.stop(ctx.currentTime + 1.5);
+        setTimeout(() => alert("Die 20 Minuten sind um! Zeit für eine Pause.\n(20 minutes are up! Time for a break.)"), 100);
       }
 
       function toggleTimer() {
-        const btnIcon = document.getElementById("timer-icon");
-
+        const icon = document.getElementById("timer-icon");
         if (isRunning) {
-          // Pause the timer
           clearInterval(timerInterval);
           isRunning = false;
-          btnIcon.innerHTML = playIcon;
+          icon.innerHTML = ICON_PLAY;
         } else {
-          // Start the timer
           isRunning = true;
-          btnIcon.innerHTML = pauseIcon;
-
+          icon.innerHTML = ICON_PAUSE;
           timerInterval = setInterval(() => {
             if (timeLeft > 0) {
               timeLeft--;
-              updateDisplay();
+              updateTimerDisplay();
             } else {
-              // Time is up
               clearInterval(timerInterval);
               isRunning = false;
               playAlarm();
@@ -1000,12 +272,15 @@
         clearInterval(timerInterval);
         isRunning = false;
         timeLeft = STUDY_TIME;
-        updateDisplay();
-        document.getElementById("timer-icon").innerHTML = playIcon;
+        updateTimerDisplay();
+        document.getElementById("timer-icon").innerHTML = ICON_PLAY;
       }
 
-      // Initialize display on load
-      document.addEventListener("DOMContentLoaded", updateDisplay);
+      // ─── Init ────────────────────────────────────────────────────────────────
+      document.addEventListener("DOMContentLoaded", () => {
+        updateTimerDisplay();
+        loadCategory(document.getElementById("category-selector").value);
+      });
     </script>
   </body>
 </html>
