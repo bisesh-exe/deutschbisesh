@@ -135,12 +135,11 @@
                 </div>
 
                 <!-- Audio buttons -->
-                <div class="flex flex-col gap-2 mt-auto pt-2" id="audio-buttons">
-                    <button id="btn-de-full" onclick="speakText('full')" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-200 text-blue-600 text-sm font-semibold hover:bg-blue-50 hover:border-blue-300 transition-all duration-200">
-                        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>
-                        Ganzen Text hören
+                <div class="mt-auto pt-2">
+                    <button id="btn-de-full" onclick="toggleSpeak()" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-200 text-blue-600 text-sm font-semibold hover:bg-blue-50 hover:border-blue-300 transition-all duration-200">
+                        <svg id="audio-btn-icon" class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>
+                        <span id="audio-btn-label">Ganzen Text hören</span>
                     </button>
-                    <div id="para-buttons" class="flex gap-2"></div>
                 </div>
             </div>
 
@@ -213,16 +212,53 @@
         };
         // ──────────────────────────────────────────────────────────────────────────
 
-        const speakerIcon = `<svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>`;
-
         let currentParas = [];
+        let isSpeaking = false;
+
+        const playIconSVG = `<svg id="audio-btn-icon" class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg>`;
+        const stopIconSVG = `<svg id="audio-btn-icon" class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 4a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1H5z" clip-rule="evenodd"></path></svg>`;
+
+        function setButtonPlaying(playing) {
+            const btn = document.getElementById('btn-de-full');
+            const label = document.getElementById('audio-btn-label');
+            isSpeaking = playing;
+            if (playing) {
+                btn.classList.add('btn-speaking', 'bg-red-50', 'border-red-300', 'text-red-600');
+                btn.classList.remove('text-blue-600', 'bg-slate-50', 'border-slate-200');
+                btn.querySelector('#audio-btn-icon').outerHTML = stopIconSVG;
+                label.textContent = 'Stop';
+                document.getElementById('card-de').classList.add('speaking');
+            } else {
+                btn.classList.remove('btn-speaking', 'bg-red-50', 'border-red-300', 'text-red-600');
+                btn.classList.add('text-blue-600', 'bg-slate-50', 'border-slate-200');
+                btn.querySelector('#audio-btn-icon').outerHTML = playIconSVG;
+                label.textContent = 'Ganzen Text hören';
+                document.getElementById('card-de').classList.remove('speaking');
+            }
+        }
+
+        function toggleSpeak() {
+            if (!('speechSynthesis' in window)) return;
+            if (isSpeaking) {
+                window.speechSynthesis.cancel();
+                setButtonPlaying(false);
+                return;
+            }
+            const text = currentParas.join(' ');
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'de-DE';
+            utterance.rate = 0.85;
+            utterance.onend = utterance.onerror = () => setButtonPlaying(false);
+            window.speechSynthesis.speak(utterance);
+            setButtonPlaying(true);
+        }
 
         function loadText(key) {
             const data = readingTexts[key];
             if (!data) return;
 
             window.speechSynthesis.cancel();
-            resetSpeakingState();
+            setButtonPlaying(false);
 
             // Reset translation visibility
             translationVisible = true;
@@ -254,50 +290,6 @@
 
             // Store paragraphs for audio
             currentParas = data.paragraphs.de;
-
-            // Build per-paragraph audio buttons
-            const paraButtons = document.getElementById('para-buttons');
-            paraButtons.innerHTML = '';
-            data.paragraphs.de.forEach((_, i) => {
-                const btn = document.createElement('button');
-                btn.id = `btn-para-${i}`;
-                btn.className = 'flex items-center justify-center gap-1.5 flex-1 py-2 px-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 text-xs font-medium hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200';
-                btn.innerHTML = `${speakerIcon} Absatz ${i + 1}`;
-                btn.onclick = () => speakText(i);
-                paraButtons.appendChild(btn);
-            });
-        }
-
-        function resetSpeakingState() {
-            document.querySelectorAll('[id^="btn-"]').forEach(btn => {
-                btn.classList.remove('btn-speaking', 'bg-blue-100', 'border-blue-400', 'text-blue-700');
-            });
-            document.getElementById('card-de').classList.remove('speaking');
-        }
-
-        function speakText(index) {
-            if (!('speechSynthesis' in window)) return;
-            window.speechSynthesis.cancel();
-            resetSpeakingState();
-
-            let text, btnId;
-            if (index === 'full') {
-                text = currentParas.join(' ');
-                btnId = 'btn-de-full';
-            } else {
-                text = currentParas[index];
-                btnId = `btn-para-${index}`;
-            }
-
-            const btn = document.getElementById(btnId);
-            if (btn) btn.classList.add('btn-speaking', 'bg-blue-100', 'border-blue-400', 'text-blue-700');
-            document.getElementById('card-de').classList.add('speaking');
-
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'de-DE';
-            utterance.rate = 0.85;
-            utterance.onend = utterance.onerror = () => resetSpeakingState();
-            window.speechSynthesis.speak(utterance);
         }
 
         // Toggle translation visibility
