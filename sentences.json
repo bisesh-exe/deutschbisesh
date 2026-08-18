@@ -1,5 +1,11 @@
 {
   "Flink": [
+    { "en": "These are both my orders.", "de": "Das sind beides meine Bestellungen." },
+  { "en": "Both castles look the same.", "de": "Beide Schlösser sehen gleich aus." },
+  { "en": "Is the wash included in the same price?", "de": "Ist das Waschen im selben Preis inbegriffen?" },
+  { "en": "The money is short; I should get 2.75 euros back, but there is only 1.75 euros.", "de": "Das Geld reicht nicht; ich muss 2,75 Euro zurückbekommen, aber es sind nur 1,75 Euro." },
+  { "en": "The faces of these people are not the same.", "de": "Die Gesichter dieser Personen sind nicht gleich." },
+  { "en": "Both of these bicycles look similar.", "de": "Diese beiden Fahrräder sehen sich ähnlich." },
     { "en": "Good afternoon! I'm from Flink. I have your order with me.", "de": "Guten Tag! Ich bin von Flink. Ich habe Ihre Bestellung dabei." },
 { "en": "One moment, please. I'll be right there.", "de": "Einen Moment bitte. Ich komme sofort." },
 { "en": "The customer is taking a little longer. The rider calls the customer.", "de": "Der Kunde braucht etwas länger. Der Fahrer ruft an." },
