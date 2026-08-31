@@ -141,21 +141,37 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
+   <!-- ===== FOOTER ===== -->
     <footer class="mt-auto border-t border-slate-200 bg-white">
       <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div>
           <p class="text-sm font-semibold text-slate-700">Bchronicles Deutsch</p>
           <p class="text-xs text-slate-500 mt-1">Lernportal für die deutsche Sprache (A2)</p>
+          
+          <!-- Analytics Display -->
+          <div id="analytics-display" class="mt-3 text-xs text-slate-600 hidden">
+            <span class="inline-flex items-center gap-1">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <span id="view-count" class="font-bold">...</span> Aufrufe (letzte 7 Tage)
+            </span>
+            <span class="mx-2">•</span>
+            <a href="https://YOUR_CODE.goatcounter.com" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+              Besucherorte ansehen (Standorte)
+            </a>
+          </div>
+
         </div>
         <div class="text-sm text-slate-400">&copy; 2026. Alle Rechte vorbehalten.</div>
       </div>
     </footer>
+    
     <script src="timer.js"></script>
+    
+    <!-- Analytics Tracking Script -->
+    <script data-goatcounter="https://YOUR_CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
       // ─── Data ────────────────────────────────────────────────────────────────
-      // All sentence data lives in sentences.json (same directory).
-      // We cache it after the first fetch to avoid repeated network requests.
       let sentenceData = null;
 
       async function fetchSentences() {
@@ -183,8 +199,7 @@
 
           phrases.forEach((phrase, index) => {
             const card = document.createElement("div");
-            card.className =
-              "bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+            card.className = "bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
 
             card.innerHTML = `
               <div>
@@ -228,10 +243,24 @@
 
       // ─── Init ────────────────────────────────────────────────────────────────
       document.addEventListener("DOMContentLoaded", () => {
-        // Removed the broken timer function call. timer.js handles itself!
-        
-        // Load the initial category
         loadCategory(document.getElementById("category-selector").value);
+        
+        // --- API call for visitor counter ---
+        // The ?start=week parameter tells the API to only return the last 7 days.
+        const countUrl = 'https://YOUR_CODE.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json?start=week';
+        
+        fetch(countUrl)
+          .then(res => {
+            if (!res.ok) throw new Error("API responded with " + res.status);
+            return res.json();
+          })
+          .then(data => {
+            if (data && data.count) {
+              document.getElementById('view-count').textContent = data.count;
+              document.getElementById('analytics-display').classList.remove('hidden');
+            }
+          })
+          .catch(err => console.error("Analytics counter skipped:", err));
       });
     </script>
   </body>
