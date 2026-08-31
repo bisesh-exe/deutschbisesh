@@ -247,8 +247,7 @@
         
         // --- API call for visitor counter ---
         // The ?start=week parameter tells the API to only return the last 7 days.
-        const countUrl = 'https://YOUR_CODE.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json?start=week';
-        
+const countUrl = 'https://deutschb.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json?start=week';        
         fetch(countUrl)
           .then(res => {
             if (!res.ok) throw new Error("API responded with " + res.status);
