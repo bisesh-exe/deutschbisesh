@@ -62,9 +62,16 @@
       background-image: linear-gradient(rgba(248,250,252,.72), rgba(248,250,252,.72));
     }
 
+    .enrolled-checkbox {
+      width: 1.15rem;
+      height: 1.15rem;
+      cursor: pointer;
+      accent-color: #2563eb;
+    }
+
     @media (max-width: 768px) {
       .course-table {
-        min-width: 1060px;
+        min-width: 1210px;
       }
     }
   </style>
@@ -135,7 +142,7 @@
         <h1 class="mt-1 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">MIM Studienplan</h1>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
           <p class="text-sm text-slate-500">Completed subjects</p>
           <p id="completed-count" class="mt-1 text-2xl font-bold text-slate-900">0 / 17</p>
@@ -152,6 +159,11 @@
           <div class="mt-3 h-3 rounded-full bg-slate-200 overflow-hidden">
             <div id="progress-bar" class="h-full bg-green-500 transition-all duration-300" style="width:0%"></div>
           </div>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-sm text-slate-500">Enrolled this semester</p>
+          <p id="enrolled-summary" class="mt-1 text-2xl font-bold text-slate-900">0 subjects</p>
+          <p id="enrolled-ects" class="mt-1 text-sm font-medium text-blue-600">0 ECTS</p>
         </div>
       </div>
 
@@ -175,7 +187,8 @@
               <th class="p-3 text-center min-w-[145px]">min 4 Elective<br>for MIM Students</th>
               <th class="p-3 text-center min-w-[150px]">up to 5 Elective for<br>Bridging Students</th>
               <th class="p-3 text-center min-w-[150px]">Elective for International<br>Exchange students</th>
-              <th class="p-3 text-center min-w-[105px] sticky right-0 bg-slate-100 z-10">Completed</th>
+              <th class="p-3 text-center min-w-[105px] sticky right-[150px] bg-slate-100 z-10">Completed</th>
+              <th class="p-3 text-center min-w-[150px] sticky right-0 bg-blue-50 z-10">Enrolled this<br>semester</th>
             </tr>
           </thead>
           <tbody id="subjects-body"></tbody>
@@ -186,25 +199,29 @@
               <td class="p-3 text-center">(4 × 6 ECTS = 24 ECTS)</td>
               <td class="p-3 text-center category-mandatory">(5 × 6 ECTS = 30 ECTS)</td>
               <td class="p-3 text-center">(according to Partnership Agreement)</td>
-              <td class="p-3 sticky right-0 bg-slate-100"></td>
+              <td class="p-3 sticky right-[150px] bg-slate-100"></td>
+              <td id="enrolled-footer" class="p-3 text-center sticky right-0 bg-blue-50 font-semibold text-blue-800">0 subjects / 0 ECTS</td>
             </tr>
             <tr>
               <td class="p-2" colspan="3"></td>
               <td class="p-3 text-center category-mandatory" colspan="3">min. 90 ECTS for MIM Students</td>
               <td class="p-3"></td>
-              <td class="p-3 sticky right-0 bg-slate-100"></td>
+              <td class="p-3 sticky right-[150px] bg-slate-100"></td>
+              <td class="p-3 sticky right-0 bg-blue-50"></td>
             </tr>
             <tr>
               <td class="p-2" colspan="2"></td>
               <td class="p-3 text-center category-mandatory" colspan="4">Up to 120 ECTS for Bridging Students</td>
               <td class="p-3"></td>
-              <td class="p-3 sticky right-0 bg-slate-100"></td>
+              <td class="p-3 sticky right-[150px] bg-slate-100"></td>
+              <td class="p-3 sticky right-0 bg-blue-50"></td>
             </tr>
           </tfoot>
         </table>
       </div>
     </div>
 
+    <p class="mt-4 text-xs text-slate-400">Note: one subject title is visibly truncated in the supplied reference image, so it is kept with an ellipsis here rather than guessing the missing text.</p>
   </main>
 
   <footer class="mt-auto border-t border-slate-200 bg-white">
@@ -255,6 +272,27 @@
 
     const REQUIRED_SUBJECTS = 17;
     const REQUIRED_ECTS = 120;
+    const ENROLLED_STORAGE_KEY = 'bchronicles-enrolled-subjects';
+
+    function loadEnrolledSubjects() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(ENROLLED_STORAGE_KEY) || '[]');
+        return new Set(Array.isArray(saved) ? saved : []);
+      } catch (error) {
+        console.warn('Could not load enrolled subjects from browser storage:', error);
+        return new Set();
+      }
+    }
+
+    const enrolledSubjects = loadEnrolledSubjects();
+
+    function saveEnrolledSubjects() {
+      try {
+        localStorage.setItem(ENROLLED_STORAGE_KEY, JSON.stringify([...enrolledSubjects]));
+      } catch (error) {
+        console.warn('Could not save enrolled subjects to browser storage:', error);
+      }
+    }
 
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
@@ -278,15 +316,39 @@
             ${categoryCell(subject.mimElective, 'category-mim-elective')}
             ${categoryCell(subject.bridging, 'category-bridging')}
             ${categoryCell(subject.exchange, 'category-exchange')}
-            <td class="p-2 text-center sticky right-0 bg-slate-100 z-[1]" aria-label="${completed ? 'Completed' : 'Not completed'}">
+            <td class="p-2 text-center sticky right-[150px] bg-slate-100 z-[1]" aria-label="${completed ? 'Completed' : 'Not completed'}">
               ${completed
                 ? '<span class="status-tick" title="Completed" aria-hidden="true">✓</span>'
                 : '<span class="status-empty" aria-hidden="true">—</span>'}
             </td>
+            <td class="p-2 text-center sticky right-0 bg-blue-50 z-[1]">
+              <input
+                type="checkbox"
+                class="enrolled-checkbox"
+                data-enrolled-id="${subject.id}"
+                ${enrolledSubjects.has(subject.id) ? 'checked' : ''}
+                aria-label="Enrolled this semester: ${subject.name}"
+                title="Enrolled this semester"
+              >
+            </td>
           </tr>`;
       }).join('');
 
+      body.querySelectorAll('[data-enrolled-id]').forEach(checkbox => {
+        checkbox.addEventListener('change', event => {
+          const subjectId = event.currentTarget.dataset.enrolledId;
+          if (event.currentTarget.checked) {
+            enrolledSubjects.add(subjectId);
+          } else {
+            enrolledSubjects.delete(subjectId);
+          }
+          saveEnrolledSubjects();
+          updateEnrolledSummary();
+        });
+      });
+
       updateSummary();
+      updateEnrolledSummary();
     }
 
     function updateSummary() {
@@ -298,6 +360,16 @@
       document.getElementById('completed-ects').textContent = `${completedECTS} / ${REQUIRED_ECTS} ECTS`;
       document.getElementById('progress-percent').textContent = `${percent}%`;
       document.getElementById('progress-bar').style.width = `${percent}%`;
+    }
+
+    function updateEnrolledSummary() {
+      const enrolled = subjects.filter(subject => enrolledSubjects.has(subject.id));
+      const enrolledECTS = enrolled.reduce((sum, subject) => sum + subject.ects, 0);
+      const label = `${enrolled.length} ${enrolled.length === 1 ? 'subject' : 'subjects'}`;
+
+      document.getElementById('enrolled-summary').textContent = label;
+      document.getElementById('enrolled-ects').textContent = `${enrolledECTS} ECTS`;
+      document.getElementById('enrolled-footer').textContent = `${label} / ${enrolledECTS} ECTS`;
     }
 
     document.addEventListener('DOMContentLoaded', renderSubjects);
