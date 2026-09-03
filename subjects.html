@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bchronicles Deutsch - Studienplan</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='34' y='0' fill='%23000000'/%3E%3Crect width='100' height='33' y='34' fill='%23DD0000'/%3E%3Crect width='100' height='33' y='67' fill='%23FFCC00'/%3E%3C/svg%3E">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .course-table th,
+    .course-table td {
+      border: 1px solid rgb(203 213 225);
+    }
+
+    .course-table th {
+      vertical-align: middle;
+    }
+
+    .category-mandatory { background: #d1d5db; }
+    .category-mim-elective { background: #13b85a; }
+    .category-bridging { background: #f07d27; }
+    .category-exchange { background: #17abe0; }
+
+    .status-tick {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 9999px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .status-empty {
+      color: #cbd5e1;
+      font-weight: 700;
+    }
+
+    .completed-row .subject-name {
+      text-decoration: line-through;
+      color: rgb(100 116 139);
+    }
+
+    .completed-row {
+      background-image: linear-gradient(rgba(248,250,252,.72), rgba(248,250,252,.72));
+    }
+
+    @media (max-width: 768px) {
+      .course-table {
+        min-width: 1060px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+
+  <!-- Navbar: kept in the same style as the supplied page -->
+  <nav class="sticky top-0 z-50 bg-gradient-to-r from-black via-red-600 to-yellow-500 border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white hover:text-slate-200 transition-colors">
+          <span class="text-2xl">🇩🇪</span>
+          <span class="hidden sm:inline">Bchronicles Deutsch</span>
+          <span class="sm:hidden">Bchronicles</span>
+        </a>
+
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 shadow-inner">
+            <span id="timer-display" class="font-mono text-slate-700 font-semibold w-12 text-center">20:00</span>
+            <button onclick="toggleTimer()" class="text-blue-600 hover:text-blue-800 focus:outline-none transition-colors" title="Start/Pause Timer">
+              <svg id="timer-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
+              </svg>
+            </button>
+            <button onclick="resetTimer()" class="text-slate-400 hover:text-slate-600 focus:outline-none transition-colors" title="Reset Timer">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="hidden md:block">
+            <div class="flex space-x-2">
+              <a href="index.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Sätze</a>
+              <a href="conversation.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Gespräche</a>
+              <a href="words.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Wörter</a>
+              <a href="lesen.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 hover:bg-white/30">Lesen</a>
+              <a href="subjects.html" class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-slate-900 bg-white/50 hover:bg-white/70">Studienplan</a>
+            </div>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <button onclick="toggleMobileMenu()" class="text-slate-900 hover:text-white focus:outline-none p-2 rounded-md hover:bg-white/20 transition-colors" aria-label="Open navigation menu">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+      <div class="px-4 pt-2 pb-4 space-y-1">
+        <a href="index.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Sätze</a>
+        <a href="conversation.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Gespräche</a>
+        <a href="words.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Wörter</a>
+        <a href="lesen.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">Lesen</a>
+        <a href="subjects.html" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-50">Studienplan</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-8 sm:py-12">
+    <div class="mb-8">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wider text-red-600">Subject tracker</p>
+        <h1 class="mt-1 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">MIM Studienplan</h1>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-sm text-slate-500">Completed subjects</p>
+          <p id="completed-count" class="mt-1 text-2xl font-bold text-slate-900">0 / 17</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-sm text-slate-500">Completed ECTS</p>
+          <p id="completed-ects" class="mt-1 text-2xl font-bold text-slate-900">0 / 120 ECTS</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <div class="flex justify-between gap-3 text-sm text-slate-500">
+            <span>Overall progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="mt-3 h-3 rounded-full bg-slate-200 overflow-hidden">
+            <div id="progress-bar" class="h-full bg-green-500 transition-all duration-300" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
+        <span class="inline-flex items-center gap-2"><span class="w-4 h-4 rounded-sm category-mandatory border border-slate-300"></span>Mandatory for MIM</span>
+        <span class="inline-flex items-center gap-2"><span class="w-4 h-4 rounded-sm category-mim-elective border border-slate-300"></span>MIM elective</span>
+        <span class="inline-flex items-center gap-2"><span class="w-4 h-4 rounded-sm category-bridging border border-slate-300"></span>Bridging elective</span>
+        <span class="inline-flex items-center gap-2"><span class="w-4 h-4 rounded-sm category-exchange border border-slate-300"></span>International exchange</span>
+      </div>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="course-table w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-white text-slate-900">
+              <th class="p-3 text-left min-w-[330px]">Subject</th>
+              <th class="p-3 text-center w-20">ECTS</th>
+              <th class="p-3 text-center min-w-[110px]">Semester</th>
+              <th class="p-3 text-center min-w-[145px]">Mandatory for<br>MIM Students</th>
+              <th class="p-3 text-center min-w-[145px]">min 4 Elective<br>for MIM Students</th>
+              <th class="p-3 text-center min-w-[150px]">up to 5 Elective for<br>Bridging Students</th>
+              <th class="p-3 text-center min-w-[150px]">Elective for International<br>Exchange students</th>
+              <th class="p-3 text-center min-w-[105px] sticky right-0 bg-slate-100 z-10">Completed</th>
+            </tr>
+          </thead>
+          <tbody id="subjects-body"></tbody>
+          <tfoot class="font-medium text-slate-800">
+            <tr>
+              <td class="p-2" colspan="3"></td>
+              <td class="p-3 text-center category-mandatory">(7 × 6 ECTS = 42 ECTS + 24 ECTS = 66 ECTS)</td>
+              <td class="p-3 text-center">(4 × 6 ECTS = 24 ECTS)</td>
+              <td class="p-3 text-center category-mandatory">(5 × 6 ECTS = 30 ECTS)</td>
+              <td class="p-3 text-center">(according to Partnership Agreement)</td>
+              <td class="p-3 sticky right-0 bg-slate-100"></td>
+            </tr>
+            <tr>
+              <td class="p-2" colspan="3"></td>
+              <td class="p-3 text-center category-mandatory" colspan="3">min. 90 ECTS for MIM Students</td>
+              <td class="p-3"></td>
+              <td class="p-3 sticky right-0 bg-slate-100"></td>
+            </tr>
+            <tr>
+              <td class="p-2" colspan="2"></td>
+              <td class="p-3 text-center category-mandatory" colspan="4">Up to 120 ECTS for Bridging Students</td>
+              <td class="p-3"></td>
+              <td class="p-3 sticky right-0 bg-slate-100"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="mt-auto border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="text-sm font-semibold text-slate-700">Bchronicles Deutsch</p>
+        <p class="text-xs text-slate-500 mt-1">Lernportal für die deutsche Sprache (A2)</p>
+      </div>
+      <div class="text-sm text-slate-400">&copy; 2026. Alle Rechte vorbehalten.</div>
+    </div>
+  </footer>
+
+  <!-- Reuse the timer script already present in your website -->
+  <script src="timer.js"></script>
+
+  <script>
+    // Edit only the `completed` value to maintain progress in code:
+    // completed: true  -> shows a green completed tick
+    // completed: false -> shows no tick
+    //
+    // Degree target: 17 completed subjects in total, made up of
+    // 16 subjects × 6 ECTS + the mandatory 24 ECTS Master Thesis = 120 ECTS.
+    const subjects = [
+      { id: 'academic-research-writing', name: 'Academic Research & Writing', ects: 6, semester: 'Sum & Win', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'organisational-communication-management', name: 'Organisational Communication Management', ects: 6, semester: 'Winter', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'knowledge-management', name: 'Knowledge Management', ects: 6, semester: 'Winter', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'business-simulation-controlling', name: 'Business simulation and controlling', ects: 6, semester: 'Summer', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'innovation-management', name: 'Innovation Management', ects: 6, semester: 'Summer', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: true },
+      { id: 'intercultural-studies', name: 'Intercultural studies', ects: 6, semester: 'Winter', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'interdisciplinary-case-studies', name: 'Interdisciplinary case studies', ects: 6, semester: 'Summer', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'master-thesis', name: 'Master Thesis', ects: 24, semester: 'Sum & Win', mandatory: true, mimElective: false, bridging: false, exchange: true, completed: false },
+      { id: 'german-language-culture-1', name: 'German Language and Culture 1', ects: 6, semester: 'Winter', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: false },
+      { id: 'german-language-culture-2', name: 'German Language and Culture 2', ects: 6, semester: 'Summer', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: false },
+      { id: 'interdisciplinary-project-1', name: 'Interdisciplinary Project I', ects: 6, semester: 'Sum & Win', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: false },
+      { id: 'interdisciplinary-project-2', name: 'Interdisciplinary Project II', ects: 6, semester: 'Sum & Win', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: false },
+      { id: 'international-business-transactions', name: 'International Business Transactions', ects: 6, semester: 'Summer', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: true },
+      { id: 'public-international-law', name: 'Public International Law', ects: 6, semester: 'Summer', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: false },
+      { id: 'transport-management', name: 'Transport Management', ects: 6, semester: 'Summer', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: true },
+      { id: 'business-ethics-compliance', name: 'Business Ethics (& Compliance Management)', ects: 6, semester: 'Winter', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: false },
+      { id: 'export-marketing', name: 'Export Marketing', ects: 6, semester: 'Winter', mandatory: false, mimElective: true, bridging: true, exchange: true, completed: true },
+      { id: 'financial-management', name: 'Financial Management', ects: 6, semester: 'Winter', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
+      { id: 'sustainable-development', name: 'Sustainable Development', ects: 6, semester: 'Winter', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
+      { id: 'monetary-policy', name: 'Monetary Policy', ects: 6, semester: 'Summer', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
+      { id: 'principles-communication', name: 'Principles of Communication (New Work & Employr…)', ects: 6, semester: 'Summer', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
+      { id: 'european-law', name: 'European Law', ects: 6, semester: 'Summer', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
+      { id: 'intercultural-practice-project', name: 'Intercultural Practice Project', ects: 6, semester: 'Sum & Win', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false }
+    ];
+
+    const REQUIRED_SUBJECTS = 17;
+    const REQUIRED_ECTS = 120;
+
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    function categoryCell(active, className) {
+      return `<td class="p-0 ${active ? className : ''}" aria-label="${active ? 'Included' : 'Not included'}"></td>`;
+    }
+
+    function renderSubjects() {
+      const body = document.getElementById('subjects-body');
+
+      body.innerHTML = subjects.map(subject => {
+        const completed = subject.completed === true;
+        return `
+          <tr data-subject-id="${subject.id}" class="${completed ? 'completed-row' : ''}">
+            <td class="subject-name p-2.5 font-semibold text-slate-800">${subject.name}</td>
+            <td class="p-2 text-center">${subject.ects}</td>
+            <td class="p-2 text-center whitespace-nowrap">${subject.semester}</td>
+            ${categoryCell(subject.mandatory, 'category-mandatory')}
+            ${categoryCell(subject.mimElective, 'category-mim-elective')}
+            ${categoryCell(subject.bridging, 'category-bridging')}
+            ${categoryCell(subject.exchange, 'category-exchange')}
+            <td class="p-2 text-center sticky right-0 bg-slate-100 z-[1]" aria-label="${completed ? 'Completed' : 'Not completed'}">
+              ${completed
+                ? '<span class="status-tick" title="Completed" aria-hidden="true">✓</span>'
+                : '<span class="status-empty" aria-hidden="true">—</span>'}
+            </td>
+          </tr>`;
+      }).join('');
+
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const completedSubjects = subjects.filter(subject => subject.completed === true);
+      const completedECTS = completedSubjects.reduce((sum, subject) => sum + subject.ects, 0);
+      const percent = Math.min(100, Math.round((completedECTS / REQUIRED_ECTS) * 100));
+
+      document.getElementById('completed-count').textContent = `${completedSubjects.length} / ${REQUIRED_SUBJECTS}`;
+      document.getElementById('completed-ects').textContent = `${completedECTS} / ${REQUIRED_ECTS} ECTS`;
+      document.getElementById('progress-percent').textContent = `${percent}%`;
+      document.getElementById('progress-bar').style.width = `${percent}%`;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderSubjects);
+  </script>
+</body>
+</html>
