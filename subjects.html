@@ -220,8 +220,18 @@
         </table>
       </div>
     </div>
-
-    <p class="mt-4 text-xs text-slate-400">Note: one subject title is visibly truncated in the supplied reference image, so it is kept with an ellipsis here rather than guessing the missing text.</p>
+<div class="mt-10 w-full flex justify-center">
+  <div
+    class="w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
+    style="aspect-ratio: 297 / 210;"
+  >
+    <img
+      src="schedule.png"
+      alt="A4 landscape image"
+      class="w-full h-full object-contain"
+    >
+  </div>
+</div>
   </main>
 
   <footer class="mt-auto border-t border-slate-200 bg-white">
@@ -267,7 +277,9 @@
       { id: 'monetary-policy', name: 'Monetary Policy', ects: 6, semester: 'Summer', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
       { id: 'principles-communication', name: 'Principles of Communication (New Work & Employr…)', ects: 6, semester: 'Summer', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
       { id: 'european-law', name: 'European Law', ects: 6, semester: 'Summer', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
-      { id: 'intercultural-practice-project', name: 'Intercultural Practice Project', ects: 6, semester: 'Sum & Win', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false }
+      { id: 'intercultural-practice-project', name: 'Intercultural Practice Project', ects: 6, semester: 'Sum & Win', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false },
+          { id: 'Enterprise-Architecture-Management', name: 'Enterprise Architecture Management', ects: 6, semester: 'Winter', mandatory: false, mimElective: false, bridging: true, exchange: true, completed: false }
+
     ];
 
     const REQUIRED_SUBJECTS = 17;
