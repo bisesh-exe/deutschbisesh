@@ -655,5 +655,70 @@
     { "en": "That costs about fifty euros.", "de": "Das kostet etwa fünfzig Euro." },
     { "en": "What are we supposed to do now?", "de": "Was sollen wir denn nun machen?" },
     { "en": "Now tell me what happened!", "de": "Nun erzähl schon, was passiert ist!" }
-  ]
+  ],
+  "B1 Grammatik-N": [
+  { "en": "It is important to learn German every day.", "de": "Es ist wichtig, jeden Tag Deutsch zu lernen." },
+  { "en": "I don't feel like cooking tonight.", "de": "Ich habe keine Lust, heute Abend zu kochen." },
+  { "en": "He often forgets to close the door.", "de": "Er vergisst oft, die Tür zuzumachen." },
+  { "en": "It is fun to play football with friends.", "de": "Es macht Spaß, mit Freunden Fußball zu spielen." },
+  { "en": "Do you have time to help me?", "de": "Hast du Zeit, mir zu helfen?" },
+  { "en": "She plans to move to Berlin next year.", "de": "Sie hat vor, nächstes Jahr nach Berlin zu ziehen." },
+  { "en": "It is hard to get up early.", "de": "Es ist schwer, früh aufzustehen." },
+
+  { "en": "I go to the bakery to buy bread rolls.", "de": "Ich gehe zum Bäcker, um Brötchen zu kaufen." },
+  { "en": "She learns German in order to work in Germany.", "de": "Sie lernt Deutsch, um in Deutschland zu arbeiten." },
+  { "en": "We are going to Kiel to see the sea.", "de": "Wir fahren nach Kiel, um das Meer zu sehen." },
+  { "en": "He takes a dictionary to understand new words.", "de": "Er nimmt ein Wörterbuch, um neue Wörter zu verstehen." },
+  { "en": "I set the alarm to get up on time.", "de": "Ich stelle den Wecker, um pünktlich aufzustehen." },
+  { "en": "You need a pen to fill out the form.", "de": "Du brauchst einen Stift, um das Formular auszufüllen." },
+  { "en": "She calls her mother to congratulate her.", "de": "Sie ruft ihre Mutter an, um ihr zu gratulieren." },
+
+  { "en": "I speak slowly so that you understand me.", "de": "Ich spreche langsam, damit du mich verstehst." },
+  { "en": "He writes down the address so that we find the way.", "de": "Er schreibt die Adresse auf, damit wir den Weg finden." },
+  { "en": "She buys fruit so that the children eat healthily.", "de": "Sie kauft Obst, damit die Kinder gesund essen." },
+  { "en": "I turn on the light so that you can read better.", "de": "Ich mache das Licht an, damit du besser lesen kannst." },
+  { "en": "The teacher repeats the rule so that everyone learns it.", "de": "Der Lehrer wiederholt die Regel, damit alle sie lernen." },
+  { "en": "We give you the key so that you can get into the house.", "de": "Wir geben dir den Schlüssel, damit du ins Haus kommst." },
+  { "en": "She tidies the apartment so that the guests feel comfortable.", "de": "Sie räumt die Wohnung auf, damit die Gäste sich wohlfühlen." },
+
+  { "en": "Before I go to work, I have breakfast.", "de": "Bevor ich zur Arbeit gehe, frühstücke ich." },
+  { "en": "I wash my hands before I eat.", "de": "Ich wasche mir die Hände, bevor ich esse." },
+  { "en": "Before we go to the cinema, we buy tickets.", "de": "Bevor wir ins Kino gehen, kaufen wir Tickets." },
+  { "en": "He drinks a coffee before he leaves the house.", "de": "Er trinkt einen Kaffee, bevor er das Haus verlässt." },
+  { "en": "Call me before you set off.", "de": "Ruf mich an, bevor du losfährst." },
+  { "en": "Before she goes to sleep, she reads a book.", "de": "Bevor sie schlafen geht, liest sie ein Buch." },
+  { "en": "We tidy up before the guests arrive.", "de": "Wir räumen auf, bevor die Gäste kommen." },
+
+  { "en": "While I cook, my husband listens to music.", "de": "Während ich koche, hört mein Mann Musik." },
+  { "en": "She learns vocabulary while she sits on the bus.", "de": "Sie lernt Vokabeln, während sie im Bus sitzt." },
+  { "en": "While it is raining, we stay at home.", "de": "Während es regnet, bleiben wir zu Hause." },
+  { "en": "He talks on the phone while he goes for a walk.", "de": "Er telefoniert, während er spazieren geht." },
+  { "en": "The children play while the parents work.", "de": "Die Kinder spielen, während die Eltern arbeiten." },
+  { "en": "While I take a shower, she makes breakfast.", "de": "Während ich dusche, macht sie das Frühstück." },
+  { "en": "I listen to the radio while I drive.", "de": "Ich höre Radio, während ich Auto fahre." },
+
+  { "en": "After I have eaten, I brush my teeth.", "de": "Nachdem ich gegessen habe, putze ich die Zähne." },
+  { "en": "After he came home, he took a shower.", "de": "Nachdem er nach Hause gekommen ist, hat er geduscht." },
+  { "en": "We go for a walk after we have had breakfast.", "de": "Wir gehen spazieren, nachdem wir gefrühstückt haben." },
+  { "en": "After she has read the letter, she calls her friend.", "de": "Nachdem sie den Brief gelesen hat, ruft sie ihre Freundin an." },
+  { "en": "I go shopping after I have finished work.", "de": "Ich kaufe ein, nachdem ich die Arbeit beendet habe." },
+  { "en": "After we had seen the film, we went home.", "de": "Nachdem wir den Film gesehen hatten, sind wir nach Hause gegangen." },
+  { "en": "He rests after he has done sports.", "de": "Er ruht sich aus, nachdem er Sport gemacht hat." },
+
+  { "en": "You learn German by reading and speaking a lot.", "de": "Man lernt Deutsch, indem man viel liest und spricht." },
+  { "en": "She saves money by cooking herself.", "de": "Sie spart Geld, indem sie selbst kocht." },
+  { "en": "I open the door by pressing the button.", "de": "Ich öffne die Tür, indem ich auf den Knopf drücke." },
+  { "en": "He helps me by carrying my bag.", "de": "Er hilft mir, indem er meine Tasche trägt." },
+  { "en": "We keep fit by cycling every day.", "de": "Wir halten uns fit, indem wir jeden Tag Rad fahren." },
+  { "en": "You make friends by attending a course.", "de": "Du findest Freunde, indem du einen Kurs besuchst." },
+  { "en": "She makes her mother happy by visiting her often.", "de": "Sie macht ihre Mutter glücklich, indem sie sie oft besucht." },
+
+  { "en": "It is raining heavily, so we are staying at home.", "de": "Es regnet stark, sodass wir zu Hause bleiben." },
+  { "en": "He speaks so quietly that I can't understand him.", "de": "Er spricht sehr leise, sodass ich ihn nicht verstehe." },
+  { "en": "I was tired, so I went to bed early.", "de": "Ich war müde, sodass ich früh ins Bett gegangen bin." },
+  { "en": "The train was delayed, so I arrived late.", "de": "Der Zug hatte Verspätung, sodass ich zu spät gekommen bin." },
+  { "en": "She studied well, so she passed the exam.", "de": "Sie hat gut gelernt, sodass sie die Prüfung bestanden hat." },
+  { "en": "The music is so loud that the neighbours complain.", "de": "Die Musik ist sehr laut, sodass die Nachbarn sich beschweren." },
+  { "en": "It was so hot that we ate ice cream in the garden.", "de": "Es war sehr heiß, sodass wir im Garten Eis gegessen haben." }
+]
 }
