@@ -74,7 +74,27 @@
   { "en": "My sister and I have a very close relationship with each other.", "de": "Meine Schwester und ich haben eine sehr enge Beziehung zueinander." },
   { "en": "No one knows exactly what will happen in the future.", "de": "Niemand weiß genau, was in der Zukunft passieren wird." },
   { "en": "A walk in the park helps me forget the stress in everyday life.", "de": "Ein Spaziergang im Park hilft mir, den Stress im Alltag zu vergessen." },
-  { "en": "Reading is my favorite activity on the weekend.", "de": "Lesen ist meine liebste Tätigkeit am Wochenende." }
+  { "en": "Reading is my favorite activity on the weekend.", "de": "Lesen ist meine liebste Tätigkeit am Wochenende." },
+  { "en": "Have a nice rest of your day!", "de": "Schönen Tag noch!" },
+  { "en": "Thanks, same to you!", "de": "Danke, gleichfalls!" },
+  { "en": "I wish you that too.", "de": "Das wünsche ich Ihnen auch." },
+
+  { "en": "Have a nice evening!", "de": "Schönen Abend!" },
+  { "en": "Thank you, you too!", "de": "Danke schön, Ihnen auch!" },
+  { "en": "See you tomorrow.", "de": "Bis morgen." },
+
+  { "en": "Have a nice weekend!", "de": "Schönes Wochenende!" },
+  { "en": "Thank you very much, same to you!", "de": "Vielen Dank, gleichfalls!" },
+  { "en": "I'm looking forward to the weekend.", "de": "Ich freue mich auf das Wochenende." },
+
+  { "en": "Merry Christmas!", "de": "Frohe Weihnachten!" },
+  { "en": "Thanks, merry Christmas to you too!", "de": "Danke, Ihnen auch frohe Weihnachten!" },
+  { "en": "I wish you a nice holiday.", "de": "Ich wünsche Ihnen schöne Feiertage." },
+
+  { "en": "Happy New Year!", "de": "Frohes neues Jahr!" },
+  { "en": "Have a good start into the new year! (said before New Year's Day)", "de": "Guten Rutsch!" },
+  { "en": "Thanks, a happy new year to you too!", "de": "Danke, ebenfalls ein frohes neues Jahr!" },
+  { "en": "I wish you lots of luck and health.", "de": "Ich wünsche Ihnen viel Glück und Gesundheit." }
 ],
   "cleaning": [
     { "en": "I will clean the bathroom first.", "de": "Ich werde zuerst das Badezimmer putzen." },
